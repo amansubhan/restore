@@ -1,3 +1,2 @@
-/etc/init.d/restore-backend
-/etc/restore/juggernaut.yml
-/etc/restore/restore.yml
+/etc/init.d/restore-frontend
+/etc/restore/apache.conf

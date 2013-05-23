@@ -8,5 +8,5 @@ Depends: adduser, apache2, debconf, irb1.8, libapache2-mod-fcgid, libdaemons-rub
 Conflicts: restore-ee-frontend
 Section: web
 Priority: optional
-Description: Restore backup system (Data Center Edition)
+Description: Restore backup system web frontend (Data Center Edition)
  Restore backup and restoration system (Data Center Edition)

@@ -1,23 +1,22 @@
 #!/bin/bash
 
+# Debconf config script for Restore frontend
+
+set -e
+
+# Source debconf library
 . /usr/share/debconf/confmodule
 
-dbc_first_version="4.0a1"
-dbc_dbtypes="mysql"
+package_name="restore-ee-frontend"
 
-if [ "restore-dc" = "restore-dc" ]; then
-	dbc_dbname="restore_dc"
-else
-	dbc_dbname="restore_ee"
-fi
-dbc_dbuser=$dbc_dbname
+########################################################################
+# The actual configuration
 
-. /usr/share/dbconfig-common/dpkg/config
-dbc_go restore-dc-common $@
+OLDVERSION="$2"
 
-
+#db_input "high" "${package_name}/webserver" || true
 db_go || true
 
-
+db_stop
 
 exit 0
