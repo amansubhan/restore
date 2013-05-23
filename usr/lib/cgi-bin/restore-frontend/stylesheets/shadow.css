@@ -1,0 +1,124 @@
+
+div.shadow div.content {
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    border: 1px solid #999999;
+    overflow: auto;
+}
+
+div.shadow div.topright {
+  width: 11px;
+  height: 9px;
+  right: -10px;
+  top: 0px;  
+  background: url(../images/shadow_tr.png) no-repeat top right;
+  position: absolute;
+}
+
+div.shadow div.right {
+  top: 9px;
+  bottom: 0px;
+  right: -10px;
+  width: 11px;
+  background: url(../images/shadow_r.png) repeat-y right;
+  position: absolute;
+}
+
+
+div.shadow div.bottomleft {
+  width: 11px;
+  height: 8px;
+  background: url(../images/shadow_bl.png) no-repeat bottom left;
+  position: absolute;
+  bottom: -8px;
+  left: 0px;
+}
+
+
+div.shadow div.bottom {
+  bottom: -8px;
+  left: 11px;
+  right: 1px;
+  height: 8px;
+  background: url(../images/shadow_b.png) repeat-x bottom;
+  position: absolute;
+}
+
+
+div.shadow div.bottomright {
+  width: 11px;
+  height: 8px;
+  background: url(../images/shadow_br.png) no-repeat bottom right;
+  position: absolute;
+  bottom: -8px;
+  right: -10px;
+}
+
+
+
+
+div.shadow div.content div.titlebar {
+    background-color: #225593;
+    color:white;
+    height: 22px;
+    font-size: 1em;
+    font-weight: bold;
+	text-align: center;
+    
+    background-color: #5579A9;
+	background-image: url(../images/header_bkgd.gif);
+	background-repeat: repeat-x;
+}
+
+div.shadow div.content div.titlebar a {
+    color:white;
+    font-size: 0.7em;
+}
+
+div.shadow div.content div.tabbar {
+    position: absolute;
+    overflow:none;
+    top: 22px;
+    left: 0px;
+    right: 0px;
+    height: 25px;
+    background-color: #eee;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+div.shadow div.content div.tabbar div.buttons {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    text-align: right;
+    padding: 1px;
+}
+
+div.shadow div.content div.tabbar div.tabs {
+    position: absolute;
+    /*top: 0px;*/
+    bottom: 0px;
+    left: 0px;
+    text-align: left;
+}
+
+div.shadow div.content div.panel {
+    position: absolute;
+	top: 22px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	margin: 0;
+	padding: 0;
+}
+
+div.shadow div.content div.has_tabs {
+	top: 58px;
+}
+
+

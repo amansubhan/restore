@@ -1,0 +1,28 @@
+<% @snapshots = @target.full_snapshots; if @snapshots.size > 0 %>
+	<div style="height: 30px; background-color: #eee;">
+		<span style="text-align: left; position: absolute; left: 0px; padding: 5px;">
+		<%=_('Choose a point in time')%>: <%= select_tag :snapshot_id,
+			options_for_select(@target.full_snapshots.collect {|s| [s.end_time.to_formatted_s(:short), s.id]}, @tsession[:snapshot_id].to_i),
+			:onchange => remote_function(:url => {:action => 'set_snapshot'}, :with => "'snapshot_id='+value")%>
+		</span>
+		<span style="text-align: right; position: absolute; right: 0px; padding: 5px;">
+			<%= button_to_function _('Restore'), remote_function(:url => {:action => 'show_restore_options'}), :class => 'blue'%>
+		</span>
+	</div>
+	<div class="subwindow" id='restore_browser_files' style="top: 30px;">
+		<div class="titlebar"><%=_('Browse Snapshot')%>: <%= @target.full_snapshots.find(@tsession[:snapshot_id]).end_time.to_s%>
+		</div>
+		<div class="scrollable">
+			<table class="listtable" id="restore_browse_table">
+				<%= listtable_header([_('Filename'), _('Type'), _('Size'), _('Modification Time'), _('Backup Time'), _('Error')])%>
+				<tbody>
+				<% @tsession[:restore_browser_root].children_values.each do |c|%>
+					<%= render :partial => partial_path('restore_browse_item'), :locals => {:object => c}%>
+				<% end %>
+				</tbody>
+			</table>	
+		</div>
+	</div>	
+<% else %>
+	<%=_('No snapshots are available to view.')%>
+<% end %>

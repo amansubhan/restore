@@ -1,0 +1,83 @@
+<script type="text/javascript">
+show_info = function() {
+	//$('snapshot_list').hide(); //style['bottom'] = '300px';
+	$('snapshot_info').show(); //style['height'] = '300px'; //$('snapshot_list').getHeight()+'px';
+	//$('snapshot_info').style['display'] = '';
+}
+hide_info = function() {
+	$('snapshot_info').hide(); //style['display'] = 'none';
+	//$('snapshot_list').show(); //style['bottom'] = '0px';
+}
+</script>
+
+<div id="snapshot_list">
+	<div class="titlebar"><%=_('Snapshots')%></div>
+
+	<div class="scrollable content">
+		<table class="listtable">
+			<%= listtable_header([[_('Started'), 'align="left"'],
+				[_('Finished'), 'align="left"'],
+				[_('Status'), 'align="left"'],
+				[_('Total Time'), 'align="left"'],
+				[_('Snapped Size'), 'align="right"'],
+				[_('Rate'), 'align="right"'],
+				[_('Current Size'), 'align="right"'], ''])%>
+			<tfoot>
+				<tr>
+					<td colspan="6" align="right">
+						<%=_('Total')%>:
+					</td>
+					<td align="right">
+						<%= human_size @target.size %>
+					</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tfoot>
+			<% if @snapshots.size > 0 %>
+			<% @snapshots.each do |s| %>
+			<tr>
+				<td>
+					<%= s.created_at.to_formatted_s(:short) rescue ''%>
+				</td>
+				<td>
+					<%= s.end_time.to_formatted_s(:short) rescue '' %>
+				</td>
+				<td>
+					<%= s.short_status %>
+				</td>
+				<td>
+					<%= s.total_time %>
+				</td>
+				<td align="right">
+					<%= human_size s.snapped_size %>
+				</td>
+				<td align="right">
+					<%= (rate = human_size(s.rate)).empty? ? 'n/a' : "#{rate}/s" %>
+				</td>
+				<td align="right">
+					<%= human_size s.local_size %>
+				</td>
+				<td>
+					<%= button_to_function _('View Log'), remote_function(:url => {:action => 'show_snapshot_info', :snapshot_id => s.id}), :class => 'blue'%>
+				</td>
+			</tr>
+			<% end %>
+			<% else %>
+			<tr>
+				<td colspan="8" align="center" class="no_items">
+					<%=_('No snapshots have been taken')%>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+
+<div class="window" id='snapshot_info' style="display:none;z-index:1;">
+	<div class="titlebar">
+		<%=_('Snapshot Info')%>
+		<%= link_to_function 'X', "hide_info();", :class => 'close'%>		
+	</div>
+	<div class="scrollable content" id="snapshot_info_contents"/>
+</div>
+

@@ -1,0 +1,44 @@
+<tr id="<%=item.full_id%>">
+	<td>
+		<div style="float: left;">
+		<%item.nesting.times do %>&nbsp;&nbsp;&nbsp;&nbsp;<%end%>
+		</div>	
+		<div style="width: 10px;float: left;">
+			<% if item.expanded && !item.loaded && !item.error %>
+				<% if session[:noflash] %>
+					<script type="text/javascript">
+						wizard_timers['<%=item.full_id%>'] = new PeriodicalExecuter(function(pe) {refresh_directory('<%=item.full_id%>');}, 5);
+					</script>
+				<% end %>
+				<%= image_tag('tiny_loading.gif') %>
+			<% else %>
+				<% if session[:noflash] %>
+					<script type="text/javascript">
+						if(wizard_timers['<%=item.full_id%>'])
+							wizard_timers['<%=item.full_id%>'].stop();
+					</script>
+				<% end %>
+			<%= link_to_remote(item.expanded ? image_tag('minus.png') : image_tag('plus.png'),
+				:url => {:action => 'toggle_tree_item', :tree_item_id => item.full_id})%>
+			<% end%>
+		</div>
+		<div style="float: left;">
+			<%= check_box_tag "selected[#{item.full_id}]", '1', item.selected,
+				:onclick => remote_function(:url => {:action => 'select_tree_item', :tree_item_id => item.full_id}, :with => "'value='+(checked?'1':'0')") %>
+		<%=image_tag('folder.png')%>
+	
+		<%=item.name%>
+		<% if item.error %>
+			(<%=_('Error')%>: <%= item.error %>)
+		<% end %>
+		</div>
+	</td>
+
+	<td align="right">
+		<%=item.mtime.to_formatted_s(:short) rescue ''%>
+	</td>
+
+	<td align="right">
+		<%=human_size(item.size)%>
+	</td>
+</tr>

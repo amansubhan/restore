@@ -1,0 +1,22 @@
+
+	<div class="scrollable" style="top: 0px;">
+		<table class="listtable">
+			<%= listtable_header(['Username', 'First Name', 'Last Name', 'Email Address'])%>
+			<tbody>
+				<% @current_install.users.each do |u|%>
+					<tr>
+						<td align="left">
+							<% if @current_user != u %>
+								<%= link_to_remote u.name, :url => {:controller => '/admin/users', :action => 'edit', :id => u.id}%>
+							<% else %>
+								<%= u.name %>
+							<% end %>
+						</td>
+						<td align="left"><%=u.first_name%></td>
+						<td align="left"><%=u.last_name%></td>
+						<td align="left"><%=u.email%></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>		
+	</div>

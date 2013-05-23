@@ -1,0 +1,21 @@
+<tr height="25" id="target[<%=target.id%>]" onclick="$('target[<%=target.id%>]').addClassName('selected');<%=remote_function(:url =>{:controller => "/target/#{target[:type].underscore}", :id => target.id}) unless (target.class == Restore::Target::Unknown)%>" style="cursor: pointer;">
+	<td>
+		<b>
+			<%= target.name %>
+		</b>
+	</td>
+	<td>
+		<%= target.type_name %>
+	</td>
+
+	<td>
+		<%= target.owner.name rescue 'n/a' %>
+	</td>
+
+	<td>
+		<%= target.short_status %>
+	</td>
+	<td align="right">
+		<%= human_size target.size %>
+	</td>
+</tr>

@@ -1,0 +1,13 @@
+<script type="text/javascript">
+wizard_timers = new Array();
+
+refresh_directory = function(id) {
+	//alert(id);
+	new Ajax.Request('<%=url_for(:action => 'settings_browser_refresh_file')%>?tree_item_id='+id, {asynchronous:false, evalScripts:true})
+}
+</script>
+
+<table class="listtable">
+	<%= listtable_header([_('Filename'), _('Modification Date'), _('Size')])%>
+	<%= render :partial => partial_path(@tsession[:settings_browser_root].partial_name), :locals => {:item => @tsession[:settings_browser_root]}%>
+</table>

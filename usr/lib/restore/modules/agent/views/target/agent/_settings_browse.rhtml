@@ -1,0 +1,12 @@
+<script type="text/javascript">
+wizard_timers = new Array();
+
+settings_browser_refresh_object = function(id) {
+	new Ajax.Request('<%=url_for(:action => 'settings_browser_refresh_object')%>', {asynchronous:false, evalScripts:true,parameters:{tree_object_path:id}})
+}
+</script>
+
+<table class="listtable">
+	<%= listtable_header([_('Name'), _('Type')])%>
+	<%= render :partial => partial_path(@tsession[:settings_browser_root].partial_name), :locals => {:object => @tsession[:settings_browser_root]}%>
+</table>

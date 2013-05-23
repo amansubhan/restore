@@ -1,0 +1,16 @@
+<tr id="file_<%=file.id%>" class="<%=@rowclass%>">
+	<td>
+		<%= file.path %>
+	</td>
+	<td align="right">
+		<%=human_file_type(file.file_type)%>
+	</td>
+	
+	<td align="right">
+		<%=human_size(file.size)%>
+	</td>
+	<td align="right">
+		<%=file.mtime%>
+	</td>
+</tr>
+

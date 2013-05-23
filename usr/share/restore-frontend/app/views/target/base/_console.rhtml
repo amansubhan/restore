@@ -1,0 +1,13 @@
+<script type="text/javascript">
+	divScroll = new chatscroll.Pane('console_window');
+
+<% if session[:noflash] %>
+	//if (!console_timer)
+	   //console_timer = new PeriodicalExecuter(function() {<%=remote_function(:url => {:action => :update_console})%>}, 2);
+	setTimeout("console_timer();", 2000);
+<% end %>
+</script>
+
+<div class="scrollable content" id="console_window" style="background: white; none repeat scroll 0%; color:black;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:90%;">
+	<pre id="console_content"></pre>
+</div>

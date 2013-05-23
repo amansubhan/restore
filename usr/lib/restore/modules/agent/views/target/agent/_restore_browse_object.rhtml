@@ -1,0 +1,32 @@
+<tr id="<%=object.path%>">
+	<td style="overflow: hidden; white-space: nowrap; cursor: pointer;">
+		<div style="float: left; width: <%=(object.nesting*10)%>px;">&nbsp;</div>
+		<div style="float: left; width: 15px;">
+			<% if object.container? %>
+				<%= link_to_remote(object.expanded? ? image_tag('minus.png') : image_tag('plus.png'),
+					:url => {:action => 'toggle_tree_object', :tree_object_path => object.path})%>
+			<% else %>
+				&nbsp;
+			<% end %>
+		</div>
+		<div style="float: left;">
+			<%#= link_to_remote image_tag(file.selected_image+'.png', :id => "select_#{file.id}"),
+			#	:url => {:action => 'browser_toggle_selection', :file_id => file.id}
+			%>
+		<%= image_tag('file.png')%>
+		<%=object.name%>
+		</div>
+	</td>
+	<td align="right"  width="100">
+		&nbsp;
+	</td>
+	<td align="right"  width="100">
+		&nbsp;
+	</td>
+	<td width="200">
+		<%=object.mtime.to_formatted_s(:short) rescue ''%>
+	</td>
+	<td width="200">
+		<%=object.btime.to_formatted_s(:short) rescue ''%>
+	</td>
+</tr>

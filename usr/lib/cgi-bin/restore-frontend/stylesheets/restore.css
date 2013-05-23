@@ -1,0 +1,542 @@
+body {
+	background-color: #efefef;
+	z-index: 0;
+	margin: 0px;
+	font-family: Arial, sans-serif;
+	font-size: 10pt;
+	background-color: #dddddd;
+	min-width: 800px;
+	cursor: default;
+}
+
+a img {
+	border: 0px;
+}
+
+a {
+    outline: none;
+	color: black;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+tr.selected {
+	background-color: #cccccc;
+}
+
+.blue_header {
+	color: #336699;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 16pt;
+	text-decoration: underline;
+}
+
+.bold_text {
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+form.cssform label {
+    color: black;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+div.full {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+td.no_items {
+    font-size: 22pt;
+    color: #aaa;
+    font-style: italic;
+}
+
+a.home {
+    color: #336699;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 16pt;
+}
+
+
+input {
+	border: 1px solid black;
+	border-top: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+
+input.cancel {
+    background-color: white;
+    background-image: url(../images/cancel_icon.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    border: double black;
+    color: #336699;
+    padding-right: 21px;
+    padding-left: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: bold;
+    height: 30px;
+	cursor: pointer;
+}
+
+input.submit {
+    background-color: white;
+    background-image: url(../images/next_icon.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    border: double black;
+    color: #336699;
+    padding-right: 26px;
+    padding-left: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: bold;
+    height: 30px;
+	cursor: pointer;
+}
+
+input.back {
+    background-color: white;
+    background-image: url(../images/back_icon.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    border: double black;
+    color: #336699;
+    padding-left: 26px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: bold;
+    height: 30px;
+	cursor: pointer;
+}
+
+input.blue {
+    background-image: url(../images/blue_button.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    border: 1px solid #314b6c;
+    color: white;
+    font-style: italic;
+    font-size: 10px;
+    padding-right: 20px;
+    padding-left: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: bold;
+    height: 18px;
+	cursor: pointer;
+}
+
+input.add {
+    background-image: url(../images/add_button.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    border: none;
+    color: #265a9d;
+    font-size: 11px;
+    padding-right: 2px;
+    padding-left: 33px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: bold;
+    height: 33px;
+    width: 95px;
+    white-space: normal;    
+	cursor: pointer;
+}
+
+div#rightheader form div {
+    float: left;
+}
+
+div.tooltip_contents {
+    display:none;
+    z-index:1;
+    position:absolute;
+    background-color:white;
+    width:200;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+div#appheader {
+	position: absolute;
+	top: 0px;
+	height: 70px;
+	left: 0px;
+	right: 0px;
+	background-color: #5579A9;
+	background-image: url(../images/header_bkgd.gif);
+	background-repeat: repeat-x;
+	min-width: 800px;
+}
+
+div#appcontent {
+    background-color: white;
+	
+}
+
+div.scrolltable {
+	background-color: white;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	overflow: auto;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #dddddd;
+}
+
+div.scrolltable table {
+	width: 100%;
+}
+
+div.scrolltable table tr td {
+	border-bottom: 1px solid #dddddd;
+}
+
+div#footer {
+	position: absolute;
+	bottom: 0px;
+	height: 25px;
+	left: 0px;
+	right: 0px;
+	font-family: Arial, sans-serif;
+	font-size: 7pt;
+	color: #aaaaaa;
+}
+
+div#footer a {
+	color: #aaaaaa;
+}
+
+
+div#appheader div#logo {
+	position: absolute;
+	top: 0px;
+	left: 0px;	
+}
+
+div#appheader div#flash {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 100;
+}
+
+div#appheader div#flash div.green {
+	width: 200px;
+	background-color:#dddddd;
+	color: green;
+}
+
+div#appheader div#flash div.red {
+	width: 200px;
+	background-color:#dddddd;
+	color: red;
+}
+
+div#appheader div#rightheader {
+	position: absolute;
+	right: 0px;
+	color: white;
+	text-align: right;
+	padding: 5px;
+}
+
+div#appheader a {
+/*	padding: 5px;
+	color: white;
+	font-weight: bold;*/
+}
+
+
+option.user {
+	background-repeat:no-repeat;
+	background-position:bottom left;
+	padding-left:30px;
+	background-image: url(../images/user.png);
+}
+option.group {
+	background-repeat:no-repeat;
+	background-position:bottom left;
+	padding-left:30px;
+	background-image: url(../images/group.png);
+}
+
+div#error_window {
+	background-color: white;
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	right: 50px;
+	bottom: 50px;
+	z-index: 100;
+	display: none;
+	border: 2px solid black;
+}
+
+div#error_message {
+	position:absolute;
+	overflow: auto;
+	top: 25px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	padding: 10px;
+}
+
+div.window {
+	background-color: white;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	padding: 0px;
+	margin: 0px;
+	border: 1px solid #aaaaaa;
+}
+
+div.window div.titlebar {
+	background-color: #5579A9;
+	background-image: url(../images/header_bkgd.gif);
+	background-repeat: repeat-x;
+	position: absolute;
+	top: 0px;
+	height: 1.5em;
+	left: 0px;
+	right: 0px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1em;
+}
+
+div.window div.content {
+	position: absolute;
+	top: 1.5em;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	border: 0px;
+}
+
+div.window div.titlebar a.close {
+	position: absolute;
+	right: 5px;
+	color: white;	
+	font-size: 1em;
+}
+
+div.window div.titlebar a {
+	color: white;
+	font-size: 0.7em;
+}
+
+div.scrollable {
+	background-color: white;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	padding: 0px;
+	margin: 0px;
+	overflow: auto;
+	border: 1px solid #dddddd;
+}
+
+
+
+/* for the top buttons */
+div#appheader a.button {
+    background: transparent no-repeat scroll top left;
+    color: white;
+    display: block;
+    float: left;
+    font: bold 11pt arial, sans-serif;
+    height: 24px;
+    margin-left: 6px;
+    padding-left: 18px; /* sliding doors padding */
+    text-decoration: none;
+    padding: 0px;
+    padding-left: 27px;
+}
+
+div#appheader a.active {
+    color: #336699;
+}
+
+div#appheader a.home {
+    background-image: url(../images/topbut_home.png)
+}
+
+div#appheader a.filestores {
+    background-image: url(../images/topbut_filestores.png)
+}
+
+div#appheader a.admin {
+    background-image: url(../images/topbut_admin.png)
+}
+
+div#appheader a.logout {
+    background-image: url(../images/topbut_logout.png)
+}
+
+div#appheader a.getinvolved {
+    background-image: url(../images/topbut_getinvolved.png)
+}
+
+div#appheader a.preferences {
+    background-image: url(../images/topbut_preferences.png)
+}
+
+div#appheader a.button span {
+    background: transparent url(../images/topbut.png) no-repeat top right;
+    display: block;
+    line-height: 14px;
+    padding: 5px 5px 5px 5px;
+}
+
+div#appheader a.active span {
+    background: transparent url(../images/topbut_active.png) no-repeat top right;
+    display: block;
+    line-height: 14px;
+    padding: 5px 5px 5px 5px;
+}
+
+div#appheader a.button:active span {
+    background: transparent url(../images/topbut_active.png) no-repeat top right;
+
+}
+
+div#appheader a.button:active {
+    color: #336699;
+    outline: none; /* hide dotted outline in Firefox */
+}
+
+/* for tabs */
+a.tab {
+    background: transparent no-repeat scroll bottom left;
+    color: white;
+    display: block;
+    float: left;
+    font: bold 11pt arial, sans-serif;
+    height: 33px;
+    margin-left: 0px;
+    text-decoration: none;
+    padding: 0px;
+    padding-left: 47px; /* sliding doors padding */
+}
+
+a.tab:active span {
+    background: transparent url(../images/tabbg_active.png) repeat-x bottom;
+
+}
+
+a.tab span {
+    background: transparent url(../images/tabbg.png) repeat-x bottom;
+    display: block;
+    line-height: 42px;
+    padding: 0px 5px 0px 0px;
+    height: 33px;
+    float: left;
+}
+
+a.tab.current span {
+    background: transparent url(../images/tabbg_active.png) repeat-x bottom;
+    color: #336699;
+}
+
+
+a.tab span.end {
+    background: transparent url(../images/tabend.png) no-repeat bottom right;
+    display: block;
+    height: 33px;
+    width: 7px;
+    padding: 0px;
+}
+
+a.tab.current span.end,  a.tab:active span.end{
+    background: transparent url(../images/tabend_active.png) no-repeat bottom right;
+}
+
+a.users {
+    background-image: url(../images/tabicon_users.png)
+}
+
+a.users.current, a.users:active {
+    background-image: url(../images/tabicon_users_active.png)
+}
+
+a.groups {
+    background-image: url(../images/tabicon_groups.png)
+}
+a.groups.current, a.groups:active {
+    background-image: url(../images/tabicon_groups_active.png)
+}
+
+a.snapshots {
+    background-image: url(../images/tabicon_snapshots.png)
+}
+a.snapshots.current, a.snapshots:active {
+    background-image: url(../images/tabicon_snapshots_active.png)
+}
+
+a.restore {
+    background-image: url(../images/tabicon_restore.png)
+}
+a.restore.current, a.restore:active {
+    background-image: url(../images/tabicon_restore_active.png)
+}
+
+a.console {
+    background-image: url(../images/tabicon_console.png)
+}
+a.console.current, a.console:active {
+    background-image: url(../images/tabicon_console_active.png)
+}
+
+a.permissions {
+    background-image: url(../images/tabicon_permissions.png)
+}
+a.permissions.current, a.permissions:active {
+    background-image: url(../images/tabicon_permissions_active.png)
+}
+
+a.schedule {
+    background-image: url(../images/tabicon_schedule.png)
+}
+a.schedule.current, a.schedule:active {
+    background-image: url(../images/tabicon_schedule_active.png)
+}
+
+a.settings {
+    background-image: url(../images/tabicon_settings.png)
+}
+a.settings.current, a.settings:active {
+    background-image: url(../images/tabicon_settings_active.png)
+}

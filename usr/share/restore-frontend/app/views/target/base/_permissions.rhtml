@@ -1,0 +1,73 @@
+<div style="position:absolute; width: 50%; top: 0px; left: 0px; bottom: 0px;">
+	<div class="full" style="margin: 5px 5px 5px 5px;">
+		<div class="subwindow">
+			<div class="subwindow_titlebar">
+				<%=_('General Access Settings')%>
+			</div>
+			<div class="scrollable subwindow_content">
+				<% remote_css_form_for :target, @target, :url => {:action => 'update_permissions'} do |f|%>
+					<center>
+					<fieldset style="display:table;">
+					<%= f.select :owner_id, @current_install.users.collect {|u| [u.name, u.id]}, {}, :label => _("Target Owner")%><%= tooltip2(_('Change the owner of this target to another user')) %>
+					<%= error_message_on :target, :owner_id%>
+					</fieldset>
+					<br />
+					<br/>
+					<%= submit_tag(_('UPDATE'), :class => "submit") %>
+					</center>
+					<br/>				
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="position:absolute; width:50%; top: 0px; right: 0px; bottom: 0px;">
+	<div class="full" style="margin: 5px 5px 5px 0px;">
+		<script type="text/javascript">
+		show_role_info = function() {
+			Effect.SlideDown('role_info',{duration:0.5});
+		}
+		hide_role_info = function() {
+			Effect.SlideUp('role_info',{duration:0.5});
+		}
+		</script>
+		
+		<div class="subwindow">
+
+			<div class="subwindow_titlebar">
+				<%=_('Roles')%>
+				<%= link_to_remote image_tag('add.png', :title => _("Add")), :url => {:action => 'new_role' }%>
+			</div>
+
+			<div class="scrollable subwindow_content">
+				<table class="listtable">
+					<%= listtable_header([[_('Account'), 'align="left"'],
+					[_('Permission'), 'align="left"'], ''])%>
+					
+					<% if @target.roles.count > 0 %>
+					<% @target.roles.each do |r|%>
+					<tr>
+						<td><%= r.account.name%></td>
+						<td><%= r.permission_string %></td>
+						<td><%= link_to_remote _('remove'), :url => {:action => 'delete_role', :role_id => r.id}%></td>
+					</tr>
+					<% end %>
+					<% else %>
+					<tr>
+						<td colspan="3" align="center" class="no_items">
+							<%=_('No roles exist')%>
+						</td>
+					</tr>
+					<% end %>
+				</table>
+			</div>
+		</div>
+		
+		<div id="role_info" class="dialog window" style="display:none;top:18px;">
+			<div id="role_info_content" class="dialog_content" style="width: 340px;">
+			</div>
+		</div>
+		
+	</div>
+</div>

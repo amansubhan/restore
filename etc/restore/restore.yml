@@ -1,0 +1,7 @@
+backups: /var/lib/restore/data
+env: production
+log_dir: /var/log/restore
+pid_dir: /var/run/restore
+socket_dir: /var/run/restore
+user: restore
+

@@ -1,0 +1,80 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          lighttpd
+# Required-Start:    networking
+# Required-Stop:     networking
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start the lighttpd web server.
+### END INIT INFO
+
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/usr/bin/restore
+DESC="RESTORE"
+PIDFILE=/var/run/restore/restore_backend.pid
+PIDDIR=/var/run/restore
+SCRIPTNAME=/etc/init.d/restore-backend
+ENV="env -i LANG=C PATH=/usr/local/bin:/usr/bin:/bin"
+SSD="/sbin/start-stop-daemon"
+
+DAEMON_OPTS=""
+
+test -x $DAEMON || exit 0
+
+set -e
+
+. /lib/lsb/init-functions
+
+case "$1" in
+  start)
+	log_daemon_msg "Starting $DESC backend"
+	if [ ! -d $PIDDIR ]; then
+		mkdir -p $PIDDIR
+	fi
+	chown restore:restore $PIDDIR
+	chmod 0770 $PIDDIR
+	if ! $ENV $SSD --start --quiet\
+	--pidfile $PIDFILE --exec $DAEMON -- start -- $DAEMON_OPTS ; then
+            log_end_msg 1
+	else
+            log_end_msg 0
+	fi
+    ;;
+  stop)
+	log_daemon_msg "Stopping $DESC backend"
+	if $SSD --quiet --stop --oknodo --retry 30\
+	--pidfile $PIDFILE ; then
+	    rm -f $PIDFILE
+	    log_end_msg 0
+	else
+	    log_end_msg 1
+	fi
+	;;
+  reload)
+	log_daemon_msg "Reloading $DESC backend configuration"
+	if $SSD --stop --signal 2 --oknodo --retry 30\
+	--quiet --pidfile $PIDFILE --exec $DAEMON; then
+	    if $ENV $SSD --start --quiet  \
+		--pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS ; then
+		log_end_msg 0
+	    else
+		log_end_msg 1
+	    fi
+	else
+	    log_end_msg 1
+	fi
+  ;;
+  restart|force-reload)
+	$0 stop
+	#[ -r  $PIDFILE ] && while pidof lighttpd |\
+	#	 grep -q `cat $PIDFILE 2>/dev/null` 2>/dev/null ; do sleep 1; done
+	$0 start
+	;;
+  *)
+	echo "Usage: $SCRIPTNAME {start|stop|restart|reload|force-reload}" >&2
+	exit 1
+	;;
+esac
+
+exit 0

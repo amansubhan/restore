@@ -1,0 +1,60 @@
+div.dialog {
+    border: none;
+    z-index: 2;
+    background: transparent;
+    top: 62px;
+}
+
+div.dialog_content {
+     border: 1px solid #444;
+     overflow: hidden;
+     background-color: white;
+     margin-right: auto;
+     margin-left: auto;
+     width: 400px;
+     padding: 5px;
+}
+
+div.dialog_header {
+     border: none;
+     overflow: auto;
+}
+
+div.dialog_header img {
+    float: left;
+    margin: 5px;
+}
+
+div.dialog_header h1 {
+	color: #336699;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 16pt;
+	text-decoration: underline;
+}
+
+div.dialog_blue {
+     background-image: url(../images/blue_background.png);
+     border: 2px ridge black;
+     padding: 5px;
+}
+
+div.dialog_blue table {
+    width: 100%;
+}
+
+div.dialog_blue table tr {
+    vertical-align: top;
+}
+
+div.dialog_blue table tr td {
+    width: 50%;
+}
+
+div.dialog_blue fieldset.text input {
+    width: 168px;
+}
+
+
+
+

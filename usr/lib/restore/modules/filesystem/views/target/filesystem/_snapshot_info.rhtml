@@ -1,0 +1,11 @@
+<table class="listtable">
+	<%= listtable_header([_('Event'), _('Path'), _('Error')])%>
+
+	<% @snapshot.logs.each do |l|%>
+		<tr>
+			<td><%= l.event %></td>
+			<td><%= l.file.path %></td>
+			<td><%= l.error %></td>
+		</tr>
+	<% end %>
+</table>

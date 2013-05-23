@@ -1,0 +1,2 @@
+
+<%= link_to_remote '<span>'+_('Users')+'</span>', {:url => {:controller => '/admin/users', :action => 'index'}}, :class => "tab users #{(controller.class == Admin::UsersController) ? 'current' : ''}"%><%= link_to_remote '<span>'+_('Groups')+'</span><span class="end"></span>', {:url => {:controller => '/admin/groups', :action => 'index'}}, :class => "tab groups #{(controller.class == Admin::GroupsController) ? 'current' : ''}"%>

@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: restore modules/filesystem module 4.0\n"
+"POT-Creation-Date: 2007-12-06 09:08-0700\n"
+"PO-Revision-Date: 2007-12-05 15:56-0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: views/wizards/filesystem/_browse_directory.rhtml:32
+#: views/wizards/filesystem/_browse_server.rhtml:34
+#: views/target/filesystem/_snapshot_info.rhtml:2
+#: views/target/filesystem/_browse.rhtml:28
+#: views/target/filesystem/_browse_file_info.rhtml:8
+msgid "Error"
+msgstr ""
+
+#: views/wizards/filesystem/_browse.rhtml:13
+#: views/target/filesystem/_browse.rhtml:28
+#: views/target/filesystem/_browse_file_info.rhtml:4
+#: views/target/filesystem/_restore.rhtml:5
+msgid "Filename"
+msgstr ""
+
+#: views/wizards/filesystem/_browse.rhtml:13
+#: views/target/filesystem/_browse_file_info.rhtml:26
+#: views/target/filesystem/_restore.rhtml:8
+msgid "Modification Date"
+msgstr ""
+
+#: views/wizards/filesystem/_browse.rhtml:13
+#: views/target/filesystem/_browse.rhtml:28
+#: views/target/filesystem/_browse_file_info.rhtml:28
+#: views/target/filesystem/_restore.rhtml:7
+msgid "Size"
+msgstr ""
+
+#: views/wizards/filesystem/_browse_text.rhtml:1
+msgid ""
+"Here you can select the files and directories that you wish to include in "
+"your new target."
+msgstr ""
+
+#: views/target/filesystem/_snapshot_info.rhtml:2
+#: views/target/filesystem/_browse_file_info.rhtml:25
+msgid "Event"
+msgstr ""
+
+#: views/target/filesystem/_snapshot_info.rhtml:2
+msgid "Path"
+msgstr ""
+
+#: views/target/filesystem/_browse.rhtml:15
+msgid "Choose a point in time"
+msgstr ""
+
+#: views/target/filesystem/_browse.rhtml:20
+msgid "Restore"
+msgstr ""
+
+#: views/target/filesystem/_browse.rhtml:24
+msgid "Browse Snapshot"
+msgstr ""
+
+#: views/target/filesystem/_browse.rhtml:28
+#: views/target/filesystem/_restore.rhtml:6
+msgid "Type"
+msgstr ""
+
+#: views/target/filesystem/_browse.rhtml:28
+msgid "Modification Time"
+msgstr ""
+
+#: views/target/filesystem/_browse.rhtml:28
+msgid "Backup Time"
+msgstr ""
+
+#: views/target/filesystem/_browse.rhtml:45
+msgid "close"
+msgstr ""
+
+#: views/target/filesystem/_browse.rhtml:53
+msgid "No snapshots are available to view."
+msgstr ""
+
+#: views/target/filesystem/_restore_options.rhtml:6
+msgid "RESTORE Options"
+msgstr ""
+
+#: views/target/filesystem/_restore_options.rhtml:7
+msgid "Please select the destination to which you would like to RESTORE"
+msgstr ""
+
+#: views/target/filesystem/_restore_options.rhtml:14
+msgid "RESTORE files to orginal location"
+msgstr ""
+
+#: views/target/filesystem/_restore_options.rhtml:21
+msgid "RESTORE files to a subdirectory named:"
+msgstr ""
+
+#: views/target/filesystem/_restore_options.rhtml:28
+msgid "Download a ZIP File"
+msgstr ""
+
+#: views/target/filesystem/_restore_options.rhtml:32
+msgid "CANCEL"
+msgstr ""
+
+#: views/target/filesystem/_restore_options.rhtml:33
+msgid "GO"
+msgstr ""
+
+#: views/target/filesystem/_browse_file_info.rhtml:22
+msgid "Revisions"
+msgstr ""
+
+#: views/target/filesystem/_browse_file_info.rhtml:27
+msgid "Backed up"
+msgstr ""
+
+#: views/target/filesystem/_restore.rhtml:20
+msgid "Back"
+msgstr ""
+
+#: views/target/filesystem/_restore.rhtml:21
+msgid "Restore as ZIP File"
+msgstr ""

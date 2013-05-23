@@ -1,0 +1,54 @@
+<script type="text/javascript">
+show_file_info = function() {
+	Effect.SlideDown('browser_file_info',{duration:0.5});
+}
+hide_file_info = function() {
+	Effect.SlideUp('browser_file_info',{duration:0.5});
+}
+
+</script>
+
+
+<% @snapshots = @target.full_snapshots; if @snapshots.size > 0 %>
+	<div style="height: 30px; background-color: #eee;">
+		<span style="text-align: left; position: absolute; left: 0px; padding: 5px;">
+		<%=_('Choose a point in time')%>: <%= select_tag :snapshot_id,
+			options_for_select(@target.full_snapshots.collect {|s| [s.end_time.to_formatted_s(:short), s.id]}, @tsession[:snapshot_id].to_i),
+			:onchange => remote_function(:url => {:action => 'set_snapshot'}, :with => "'snapshot_id='+value")%>
+		</span>
+		<span style="text-align: right; position: absolute; right: 0px; padding: 5px;">
+			<%= button_to_function _('Restore'), remote_function(:url => {:action => 'show_restore_options'}), :class => 'blue'%>
+		</span>
+	</div>
+	<div class="subwindow" id='browser_files' style="top: 30px;">
+		<div class="titlebar"><%=_('Browse Snapshot')%>: <%= @target.full_snapshots.find(@tsession[:snapshot_id]).end_time.to_s%>
+		</div>
+		<div class="scrollable">
+			<table class="listtable" id="browse_table">
+				<%= listtable_header([_('Filename'), _('Type'), _('Size'), _('Modification Time'), _('Backup Time'), _('Error')])%>
+				<tbody>
+				<%= render :partial => partial_path('browse_item'), :locals => {:item => @tsession[:browse_server]}%>
+				</tbody>
+			</table>	
+		</div>
+	</div>
+
+	<div class="window" id='browser_file_info' style="top:30px;border:none;display:none;z-index:2;background:transparent;">
+		<center>
+		<table style="border: 1px solid #444;overflow:auto;background-color: #eee;">
+			<tr>
+				<td id="browser_file_info_content">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= button_to_function _('close'), 'hide_file_info();'%>
+				</td>
+			</tr>
+		</table>
+		</center>
+	</div>
+	
+<% else %>
+	<%=_('No snapshots are available to view.')%>
+<% end %>

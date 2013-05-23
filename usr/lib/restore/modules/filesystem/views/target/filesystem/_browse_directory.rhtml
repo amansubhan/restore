@@ -1,0 +1,31 @@
+
+<tr id="<%=item.full_id%>">
+	<td style="overflow: hidden; white-space: nowrap; cursor: pointer;">
+		<div style="float: left; width: <%=(item.nesting*10)%>px;">&nbsp;</div>
+		<div style="float: left; width: 15px;">
+			<%= link_to_remote(item.expanded ? image_tag('minus.png') : image_tag('plus.png'),
+			:url => {:action => 'toggle_tree_item', :tree_item_id => item.full_id})%>
+		</div>
+		<div style="float: left;">
+			<%= check_box_tag "selected[#{item.full_id}]", "1", item.selected,
+				:onclick => remote_function(:url => {:action => 'select_tree_item', :tree_item_id => item.full_id, :deselect_parent => true}, :with => "'value='+($('selected[#{item.full_id}]').checked ? '1' : '0')")%>
+			<%= image_tag('folder.png')%>
+			<%= link_to_remote item.name, :url => {:action => 'browser_show_file_info', :file_id => item.id}%>
+		</div>
+	</td>
+	<td align="right"  width="100">
+		<%=human_file_type(item.file_type)%>
+	</td>
+	<td align="right"  width="100">
+		&nbsp;
+	</td>
+	<td width="200">
+		<%=item.mtime.to_formatted_s(:short) rescue ''%>
+	</td>
+	<td width="200">
+		<%=item.btime.to_formatted_s(:short) rescue ''%>
+	</td>
+	<td>
+		<%= item.error %>
+	</td>
+</tr>

@@ -1,0 +1,38 @@
+<% remote_css_form_for :role, @role, :url => {:action => :create_role} do |f|%>
+
+<div class="dialog_header">
+	<%= image_tag('permissions_large.png')%>
+	<span>
+		<h1><%=_('Add Role')%></h1>
+		<%=_('Add a user or group to this target with Read, Read/Write or Admin permissions')%>
+	</span>
+</div>
+
+<div class="dialog_blue">
+	<fieldset>
+		
+		<div class="form-field">
+			<label for="role_account_id"><%=_('Account')%></label>
+			<select id="role_account_id" name="role[account_id]">
+				<option></option>
+				<% @current_install.accounts.each do |a| %>
+					<% klass = (a.class == Restore::Account::User) ? 'user' : 'group'%>
+					<% next if a == @target.owner %>
+					<option class="<%=klass%>" value="<%=a.id%>" <%=@role.account_id == a.id ? 'selected' : ''%>><%=a.name%></option>
+				<% end %>
+			</select>
+		</div>
+		<br/>
+		<%= error_message_on :role, :account_id %>
+		
+		<%= f.select :permission, [[_('Read'), "r"], [_('Read/Write'), 'rw'], [_('Admin'), 'a']] %>
+	</fieldset>
+	
+	<center>
+		<br/>
+		<%= button_to_function _('CANCEL'), 'hide_role_info();', :class => 'cancel'%>
+		<%= submit_tag(_('CREATE'), :class => "submit") %>
+		<br/>
+	</center>
+</div>
+<% end %>

@@ -1,0 +1,28 @@
+<div class="full" style="width: 50%;">
+	<div class="full" style="margin: 5px 5px 5px 5px;">
+
+		<div class="subwindow">
+			<div class="subwindow_titlebar">
+				<%=_('Target Settings')%>
+			</div>
+			<div class="scrollable subwindow_content">
+				<%= render :partial => partial_path('settings_form')%>	
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="position:absolute; width:50%; top: 0px; right: 0px; bottom: 0px; overflow: auto;">
+	<div class="full" style="margin: 5px 5px 5px 0px;">
+
+		<div class="subwindow">
+			<div class="subwindow_titlebar">
+				<%=_('Target Contents')%>
+			</div>
+			<div class="scrollable subwindow_content">
+				<%= render :partial => partial_path('settings_browse')%>	
+			</div>
+		</div>
+	</div>
+</div>

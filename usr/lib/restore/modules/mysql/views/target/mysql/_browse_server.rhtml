@@ -1,0 +1,39 @@
+<tr id="<%=item.full_id%>">
+	<td>
+		<div style="float: left;">
+		</div>	
+		<div style="width: 10px;float: left;">
+			<%= link_to_remote(item.expanded ? image_tag('minus.png') : image_tag('plus.png'),
+				:url => {:action => 'toggle_tree_item', :tree_item_id => item.full_id})%>
+		</div>
+		<div style="float: left;">
+		<%= image_tag('server.png') %>
+		<%= item.name %>
+		</div>
+	</td>
+	<td>
+		<%=_('Server')%>
+	</td>
+	
+	<td align="right">
+		<%= 1%>
+	</td>
+	<td align="right">
+		<%=item.extra[:tables]%>
+	</td>
+	<td align="right">
+		<%=item.extra[:rows]%>
+	</td>
+	<td align="right">
+		<%= human_size item.extra[:size]%>		
+	</td>
+	<td align="right">
+		<%= human_size item.extra[:index_size]%>		
+	</td>
+	<td>
+		&nbsp;
+	</td>
+	<td>
+		&nbsp;
+	</td>
+</tr>

@@ -1,0 +1,12 @@
+<table>
+	<tr>
+		<td width="50%">
+			<%= f.select :simple_weekdays, @schedule.simple_weekday_options, {}, :multiple => true, :label => _('Weekday(s)') %><br/>
+			<%= error_message_on :schedule, :simple_weekdays%>
+			
+		</td>
+		<td>
+			<%= f.select :simple_time, @schedule.simple_time_options, {}, :label => _('Time of day') %>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+. /usr/share/debconf/confmodule
+
+dbc_first_version="4.0a1"
+dbc_dbtypes="mysql"
+
+if [ "restore-dc" = "restore-dc" ]; then
+	dbc_dbname="restore_dc"
+else
+	dbc_dbname="restore_ee"
+fi
+dbc_dbuser=$dbc_dbname
+
+. /usr/share/dbconfig-common/dpkg/config
+dbc_go restore-dc-common $@
+
+
+db_go || true
+
+
+
+exit 0

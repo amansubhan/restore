@@ -1,0 +1,12 @@
+<div class="titlebar"><%=_('Resellers')%></div>
+
+<div class="tabbar">
+	<%=_('Click on the username of a reseller to modify or delete it')%>
+	<div class="buttons">
+		<%= button_to_function(_('Add Reseller'), remote_function(:url => {:controller => '/datacenter/reseller', :action => 'new'}), :class => 'add')%>
+	</div>
+</div>
+
+<div class="panel has_tabs" id="resellers">
+	<%= render :partial => 'list'%>
+</div>

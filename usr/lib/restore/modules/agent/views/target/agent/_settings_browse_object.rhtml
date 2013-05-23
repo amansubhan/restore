@@ -1,0 +1,18 @@
+<tr id="<%=object.path%>">
+	<td style="float:left;">
+		<div style="float: left;">
+		<%object.nesting.times do %>&nbsp;&nbsp;&nbsp;&nbsp;<%end%>
+		</div>	
+		<div style="width: 10px;float: left;">
+			&nbsp;
+		</div>
+		<div style="float: left;">
+			<%= check_box_tag "selected[#{object.path}]", '1', object.selected,
+				:onclick => remote_function(:url => {:action => 'select_tree_object', :tree_object_path => object.path}, :with => "'value='+(checked?'1':'0')") %>
+		<%=image_tag('file.png')%>
+	
+		<%=object.name%>
+
+		</div>
+	</td>
+</tr>

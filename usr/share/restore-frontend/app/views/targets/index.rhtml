@@ -1,0 +1,22 @@
+<script type="text/javascript">
+
+refresh_targets = function() {
+	new Ajax.Request('<%=url_for(:controller => 'targets', :action => 'index')%>', {asynchronous:false, evalScripts:true})	
+}
+
+refresh_target = function(id) {
+	new Ajax.Request('<%=url_for(:controller => 'targets', :action => 'refresh_target')%>/'+id, {asynchronous:false, evalScripts:true})	
+}
+
+
+var selected_target = -1;
+select_target = function(id) {
+	if(selected_target != -1)
+		$('target['+selected_target+']').removeClassName('selected');
+	
+	$('target['+id+']').addClassName('selected');
+	selected_target = id;
+}
+</script>
+
+<%= render :partial => 'list' %>

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>RESTORE - <%=_('The Reason Backup was Invented')%></title>
+	<link rel="shortcut icon" href="<%=image_path('favicon.ico')%>" type="image/x-icon" />
+	<%= javascript_include_tag :defaults %>
+	<%= stylesheet_link_tag 'restore' %>
+	<%= stylesheet_link_tag 'listtable' %>
+	<%= stylesheet_link_tag 'css_form' %>
+	<%= stylesheet_link_tag 'shadow' %>
+	<%= stylesheet_link_tag 'subwindow' %>
+	<%= stylesheet_link_tag 'dialog' %>
+</head>
+<body>
+	<script type="text/javascript">
+		function noflash() {
+			<%= remote_function(:url => {:action => 'disableflash'})%>
+		}
+		
+		function checkmsieversion() {
+			var ua = window.navigator.userAgent
+		    var msie = ua.indexOf ( "MSIE " )			
+			if ( msie > 0 ) {
+				var version = parseInt (ua.substring (msie+5, ua.indexOf (".", msie )))
+				if(version < 7)
+					alert("Internet Explorer 7.0 is required!")
+			}
+		}
+		checkmsieversion();
+	</script>
+	<% unless session[:noflash] %>
+		<%= listen_to_juggernaut_channels session[:juggernaut_channels].keys %>
+	<% end %>
+		
+	<div id="appheader">
+		<div id="logo">
+			<%=image_tag('logo.gif')%><br/>
+			<center>
+			<div style="font-size: 0.7em;color: white;">Version: <%=Restore.version%></div>
+			</center>
+		</div>
+		<div id="flash">
+			<center>
+				<div id="flash_container"></div>
+			</center>
+		</div>
+
+		<div id="rightheader">
+			<% if controller.kind_of?(InstallationController) %>
+				<%= link_to '<span>'+_('Home')+'</span>', {:controller => '/home'}, :class => "button home #{(controller.kind_of?(HomeController)) ? 'active' : ''}"%>
+				<%= link_to '<span>'+_('Filestores')+'</span>', {:controller => '/targets'}, :class => "button filestores #{(controller.kind_of?(TargetsController)) ? 'active' : ''}"%>
+				<% if @current_user.is_admin? %>
+					<%= link_to '<span>'+_('Admin')+'</span>', {:controller => '/admin'}, :class => "button admin #{(controller.kind_of?(Admin::BaseController)) ? 'active' : ''}"%>
+				<% end %>
+			<% end %>
+			
+			<%= link_to_remote "<span>"+_("Preferences")+"</span>", {:url => {:controller => '/account'}}, :class => 'button preferences'%>
+			<%= link_to '<span>'+_('Get Involved')+'</span>', 'http://restore.holonyx.com', :class => 'button getinvolved', :popup => true%>
+
+			<%= link_to '<span>'+_('Logout')+'</span>', {:controller => '/login'}, :class => 'button logout'%>
+			
+			<br/><br/>
+			<div style="font-size: 0.9em;color: white;"><%=_('Logged in as')%>: <strong><%=@current_user.name%></strong></div>
+		</div>
+	</div>
+	
+	
+	<div  class="shadow" style="position: absolute; top: 70px; bottom: 25px; left: 0px; right: 11px; margin: 5px;min-width: 779px;">
+		<div class="content" style="overflow:none;" id="appcontent">
+			<%= yield %>
+		</div>
+		<div class="bottom"></div>
+		<div class="right"></div>
+		<div class="topright"></div>
+		<div class="bottomleft"></div>
+		<div class="bottomright"></div>		
+	</div>
+	<div id="footer">
+		<center>		
+			<%=link_to image_tag('ruffdogs.png'), "http://www.ruffdogs.com/", :popup => true%>
+			<%=_('A division of')%> <%= link_to "Holonyx, Inc.", "http://www.holonyx.com/", :popup => true %>
+		</center>
+	</div>
+
+	<div id="appdialog" class="dialog window" style="display:none;">
+		<div id="appdialog_content" class="dialog_content">
+		</div>
+	</div>
+		
+	<div id="error_window">
+		<div style="position:absolute; top: 0px; height: 25px; width: 100%; background-color: #BB0000; text-align: right;">
+			<%= link_to_function 'X', "$('error_window').hide();", :style => 'color: white; text-decoration: none;font-size: 25px;'%>
+		</div>
+		<div id="error_message">
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,24 @@
+<tr id="<%=item.full_id%>">
+	<td>
+		<div style="float: left;">
+			&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>	
+		<div style="width: 10px;float: left;">
+			<%= link_to_remote(item.expanded ? image_tag('minus.png') : image_tag('plus.png'),
+				:url => {:action => 'toggle_tree_item', :tree_item_id => item.full_id})%>
+		</div>
+		<div style="float: left;">
+			<%= check_box_tag "selected[#{item.full_id}]", '1', item.selected,
+				:onclick => remote_function(:url => {:action => 'select_tree_item', :tree_item_id => item.full_id}, :with => "'value='+(checked?'1':'0')") %>		
+			
+			<%= image_tag('database.png') %>
+			<%= item.name %>
+		</div>
+	</td>
+	<td>
+		<%=_('Database')%>
+	</td>
+	<td align="right">
+		<%= human_size item.extra[:size]%>		
+	</td>
+</tr>

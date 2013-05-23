@@ -1,0 +1,6 @@
+<%= render :partial => partial_path(object.partial_name), :locals => {:object => object}%>
+<% if object.expanded? %>
+	<% object.children_values.each do |c|%>
+		<%= render :partial => partial_path('restore_browse_item'), :locals => {:object => c}%>
+	<% end %>
+<% end %>	

@@ -1,0 +1,67 @@
+
+<br/>
+<br/>
+<table width="734" border="1" align="center" cellpadding="2" cellspacing="0" bordercolor="#336699">
+	<tr>
+		<td>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr valign="top">
+					<td height="100"><%=image_tag('home_home.png')%></td>
+					<td>
+						<%=link_to(_('HOME'), {:controller => '/home'}, :class => 'home')%>
+						<br />
+						<%=_('Return to this menu where you can access the variety of functionalities offered by Restore.')%>
+					</td>
+					<td>&nbsp;</td>
+					<td><%=image_tag('home_filestores.png')%></td>
+					<td>
+						<%=link_to(_('FILESTORES'), {:controller => '/targets'}, :class => 'home')%>
+						<br />
+						<%=_('Create new filestores, run snapshots, set schedules and restore archived files.')%>
+					</td>
+				</tr>
+				<tr valign="top">
+					<td height="120" ><%=image_tag('home_preferences.png')%></td>
+					<td>
+						<%=link_to_remote(_('PREFERENCES'), {:url => {:controller => '/account'}}, :class => 'home')%>
+						<br />
+						<%=_('Adjust Restore to fit your needs! Change your password, receive reports, and set the e-mail address to which you want your alerts sent.')%>
+					</td>
+					<td>&nbsp;</td>
+					<td><%=image_tag('home_register.png')%></td>
+					<td>
+						<%= link_to _('REGISTER'), "http://restore.holonyx.com/register", :popup => true, :class => 'home'%><br />
+						<%= link_to _('Register online'), "http://restore.holonyx.com/register", :popup => true%> <%=_('as a RESTORE user to receive product updates, news and helpful information.')%>
+					</td>
+				</tr>
+				<tr valign="top">
+					<td height="100"><%=image_tag('home_get_involved.png')%></td>
+					<td>
+						<%=link_to _('GET INVOLVED'), "http://restore.holonyx.com", :class => 'home', :popup => true %>
+						<br />
+						<%=_('Want to make Restore better? Help us with development, documentation, or translation. You can also file bug reports and get help in our forum.')%>
+					</td>
+					<td>&nbsp;</td>
+					<td><%=image_tag('home_terminology.png') %></td>
+					<td>
+						<%=link_to_remote _('TERMINOLOGY'), {:url => {:action => 'show_terminology'}}, :class => 'home'%>
+						<br />
+						<%=_('Get definitions of terminology commonly used in RESTORE. Find out the difference between a target, snapshot and filestore. Click here to learn more.')%>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<br/>
+<table width="734" border="1" align="center" cellpadding="2" cellspacing="0" bordercolor="#336699">
+	<tr valign="top">
+		<td width="495" bgcolor="#FFFFFF"><%=_('Please visit %s for more information.') % [link_to( "http://restore.holonyx.com/", "http://restore.holonyx.com", :popup => true)]%></td>
+		<td width="291" bgcolor="#336699">
+			<div align="right">
+				<%= link_to_remote _("Don't show this page again at startup"), {:url =>  {:action => :dont_show}}, {:style => "color: white;"}%>
+				</div>
+		</td>
+	</tr>
+</table>
+

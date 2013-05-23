@@ -1,0 +1,4 @@
+<% remote_css_form_for :reseller, @reseller, :url => {:controller => '/datacenter/reseller', :action => :create, :id => @reseller.id}, :html => {:onsubmit => "Form.getInputs(this, null, 'reseller[quota]')[0].value = calc_quota($('quota').value, $('quota_units').value)"} do |f|%>
+	<% @action = 'create' %>
+	<%= render :partial => 'form', :locals => {:f => f}%>
+<% end %>

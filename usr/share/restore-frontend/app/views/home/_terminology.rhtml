@@ -1,0 +1,75 @@
+<br/>
+<table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="217"><div align="right"><%= image_tag('definitions_small.png')%></div></td>
+		<td width="23">&nbsp;</td>
+		<td width="560"><span class="blue_header">COMMON RESTORE DEFINITIONS</span></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<table width="800" border="1" align="center" cellpadding="2" cellspacing="0" bordercolor="#336699">
+	<tr>
+		<td height="395" valign="top">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr height="19">
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="6%" valign="top">&nbsp;</td>
+					<td width="70%" height="123" valign="top">
+						<span class="blue_header">TARGET</span><br />
+						<span >
+							This is the source of a backup or the destination of a restore.
+							By creating a target, you can backup your data from this target to a filestore managed by the RESTORE server. Likewise, you restore files from the filestore (by browsing a snapshot) to a target, generally the target from which they originated.
+						</span>
+					</td>
+					<td width="6%" valign="top">&nbsp;</td>
+					<td width="18%" valign="top">
+						<div align="center">
+							<%=image_tag('target_large.png')%>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td valign="top">&nbsp;</td>
+					<td height="130" valign="top">
+						<span class="blue_header">FILESTORE</span><br />
+						<span >
+							This is the location on the RESTORE server where the data backup is held. When you browse a filestore, you are looking at all of the snapshots it contains.
+						</span>
+					</td>
+					<td valign="top">&nbsp;</td>
+					<td valign="top"><div align="center">
+						<%=image_tag('filestore_large.png')%>
+					</div></td>
+				</tr>
+				<tr>
+					<td valign="top">&nbsp;</td>
+					<td height="109" valign="top">
+						<span class="blue_header">SNAPSHOT</span><br />
+						<span >
+							The snapshot is a view of data that was backed up into a filestore at a specific point in time. When you browse a snapshot you are looking at all the files, folders and data you have backed up from your target.
+						</span>
+					</td>
+					<td valign="top">&nbsp;</td>
+					<td valign="top">
+						<div align="center">
+							<%= image_tag('snapshot_large.png')%>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<p align="center">
+	<%= link_to_remote('Back To Home Page', :url => {:action => 'index'})%>
+</p>
+<p>&nbsp;</p>

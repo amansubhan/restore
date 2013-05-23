@@ -1,0 +1,58 @@
+<div class="titlebar">
+	<%=_('Targets')%>
+</div>
+
+<div class="tabbar">
+	<%=_('Click on the filestore you wish to manage')%>
+	<div class="buttons">
+		<%= button_to_function(_('Add Target'), remote_function(:url => {:controller => '/targets', :action => 'new'}), :class => 'add')%>
+		
+	</div>
+</div>
+
+<div class="panel has_tabs">
+<table class="listtable">
+	<%= listtable_header([[_('Filestore Name'),'align="left"'] , [_('Type'),'align="left"'], [_('Owner'),'align="left"'], [_('Status'),'align="left"'], [_('Size'),'align="right"']])%>
+	<tfoot>
+		<tr>
+			<td align="right" colspan="4"><%=_('Total')%>:</td>
+			<td align="right"><%= @current_user.is_admin? ? human_size(@current_install.size) : human_size(@targets_size) %></td>
+		</tr>
+		<% if @current_user.is_admin? %>
+		<tr>
+			<td align="right" colspan="4"><%=_('Quota')%>:</td>
+			<td align="right">
+				<% if @current_install.quota == 0 %>
+				<%=_('Unlimited')%>
+				<% else %>
+				<%= human_size @current_install.quota %>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" colspan="4"><%=_('Percentage Used')%>:</td>
+			<td align="right">
+				<% if @current_user.quota == 0 %>
+				0.0%
+				<% else %>
+				<%= number_to_percentage @current_install.space_percentage, :precision => 1 %>
+				<% end %>
+			</td>
+		</tr>
+		<% end %>
+	</tfoot>
+	<% if @targets.size > 0 %>
+		<% @targets.each do |t| %>
+			<%= render :partial => 'target', :locals => {:target => t}%>
+		<% end %>
+	<% else%>
+	<tr>
+		<td colspan="5" align="center" class="no_items">
+			<%=_('No targets exist')%>
+		</td>
+	</tr>
+	<% end %>
+	
+
+</table>
+</div>

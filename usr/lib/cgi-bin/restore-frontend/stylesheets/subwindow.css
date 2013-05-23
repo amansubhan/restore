@@ -1,0 +1,51 @@
+
+div.subwindow {
+	background-color: white;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	padding: 0px;
+	margin: 0px;
+	border: 1px solid #aaaaaa;
+}
+
+div.subwindow div.subwindow_titlebar {
+	background-color: white;
+	background-image: url(../images/subwindow_title.png);
+	background-repeat: repeat-x;
+	position: absolute;
+	top: 0px;
+	height: 18px;
+	left: 0px;
+	right: 0px;
+	color: black;
+	text-align: center;
+    height: 22px;
+    font-size: 0.9em;
+}
+
+div.subwindow div.subwindow_titlebar a.close {
+	position: absolute;
+	right: 5px;
+	color: black;	
+	font-size: 1em;
+}
+
+div.subwindow div.subwindow_titlebar a {
+	color: black;
+	font-size: 0.7em;
+}
+
+div.subwindow div.subwindow_content {
+	position: absolute;
+	top: 22px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	border: 0px;
+}
+
+
+

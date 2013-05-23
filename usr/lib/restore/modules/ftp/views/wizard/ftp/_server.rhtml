@@ -1,0 +1,16 @@
+
+<center>
+<br/>
+<br/>
+
+<fieldset style="width: 231px;">
+	<%= f.text_field :hostname %><br/>
+	<%= f.text_field :port %><br/>
+	<%= f.text_field :username %><br/>
+	<%= f.password_field :password %><br/>
+	<%= f.check_box :homedir, :label => _('Stay in home directory') %><%=tooltip('/modules/ftp/homedir')%><br/>
+	
+	<%= f.check_box :passive, :label => _('Passive Mode') %><%=tooltip('/modules/ftp/passive')%>
+</fieldset>
+
+</center>

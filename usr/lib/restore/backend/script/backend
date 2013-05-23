@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+RESTORE_BACKEND_ROOT = Pathname.new(File.dirname(__FILE__)+'/..').realpath.to_s
+require File.join(RESTORE_BACKEND_ROOT, 'command')
+

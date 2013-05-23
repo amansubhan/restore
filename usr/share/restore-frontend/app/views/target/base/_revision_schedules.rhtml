@@ -1,0 +1,40 @@
+<div class="full" style="margin: 5px 5px 5px 0px;">
+<script type="text/javascript">
+show_revision_schedule_info = function() {
+	Effect.SlideDown('revision_schedule_info',{duration:0.5});
+}
+hide_revision_schedule_info = function() {
+	Effect.SlideUp('revision_schedule_info',{duration:0.5});
+}
+</script>
+<div class="subwindow">
+	<div class="subwindow_titlebar">
+		<%=_('Revision Retention Schedule')%>
+		<%= link_to_remote image_tag('add.png', :title => _("Add")), :url => {:action => 'new_revision_schedule' }%>
+	</div>
+	<div class="scrollable subwindow_content">
+		<table class="listtable">
+			<tr>
+				<td><%=_('Keep one revision for ever')%></td>
+				<td><%=_('(implied)')%></td>
+			</tr>
+			<% @target.revision_schedules.each do |rs|%>
+			<tr>
+				<td><%=_('Keep')%>
+					<%= rs.interval_string %>
+					<%=_('revisions for')%>
+					<%= rs.since_string %>
+				</td>
+				<td><%= link_to_remote 'edit', :url => {:action => :edit_revision_schedule, :revision_schedule_id => rs.id} %></td>
+			</tr>
+			<% end %>
+		</table>	
+	</div>
+</div>
+
+<div id="revision_schedule_info" class="dialog window" style="display:none;top:18px;">
+	<div id="revision_schedule_info_content" class="dialog_content" style="width: 340px;">
+	</div>
+</div>
+
+</div>

@@ -1,0 +1,9 @@
+
+<% while(b = @zipfile.get_buffer) do
+    if (b.length == 0)
+      @zipfile.fill_buffer
+    else %>
+	<%= b %>
+<% end
+end
+%>

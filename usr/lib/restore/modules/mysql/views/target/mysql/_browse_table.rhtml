@@ -1,0 +1,48 @@
+<tr id="<%=item.full_id%>">
+	<td>
+		<div style="float: left;">
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>	
+		<div style="width: 10px;float: left;">
+		</div>
+		<div style="float: left;">
+			<% if item.extra[:type] == 'VIEW'%>
+			<%= image_tag('database_view.png') %>			
+			<% else %>
+			<%= image_tag('database_table.png') %>
+			<% end %>
+			<%= link_to_remote item.name, :url => {:action => 'browser_show_table_info', :table_id => item.id}%>
+		</div>
+	</td>
+	<td>
+		<% if item.extra[:type] == 'VIEW'%>
+			<%=_('View')%>
+		<% else %>
+			<%=_('Table')%>
+		<% end %>
+	</td>
+	
+	<td align="right">
+		&nbsp;
+	</td>
+	<td align="right">
+		&nbsp;
+	</td>
+	<td align="right">
+		<%#=item.extra[:rows]%>
+	</td>
+	<td align="right">
+		<%= human_size item.size%>		
+	</td>
+	<td align="right">
+		<%= item.backup_time.to_formatted_s(:short) rescue ''%>		
+	</td>
+	
+	<td>
+		<%= item.collation%>		
+	</td>
+	<td>
+		<%= item.engine %>		
+	</td>
+</tr>

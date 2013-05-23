@@ -1,0 +1,50 @@
+
+
+<div class="dialog_header">
+	<%= image_tag('clock_large.png')%>
+	<span>
+		<h1><%= (@action == 'create' ? _('Add Schedule') : _('Edit Schedule')) %></h1>
+		<% if @action == 'create' %>
+		<%=_('Enter the following information to create a new snapshot schedule')%>
+		<% else %>
+		<%=_('Enter the following information to update this snapshot schedule')%>
+		<% end %>
+	</span>
+</div>
+
+<div class="dialog_blue">
+	<fieldset>
+		<%=f.text_field :name, :label => _('Schedule Name')%><br/>
+		<%= error_message_on :schedule, :name%>
+
+		<% if @schedule.new_record? %>
+		<div class="form-field">
+			<label for="schedule_type"><%=_('Schedule Type')%></label><br/>
+			<%= radio_button_tag 'schedule[type]', 'Simple', (@schedule[:type] == 'Simple'), :onchange => remote_function(:url => {:action => 'toggle_snapshot_schedule'}, :with => "Form.serialize(this.form)") %> Simple
+			<br/>
+			<%= radio_button_tag 'schedule[type]', 'Advanced', (@schedule[:type] == 'Advanced'), :onchange => remote_function(:url => {:action => 'toggle_snapshot_schedule'}, :with => "Form.serialize(this.form)") %> Advanced
+		</div>
+		<% end %>
+	</fieldset>
+	<br/>
+	<fieldset>
+		<div id="snapshot_schedule_info_type">
+			<% if @schedule[:type] == 'Advanced' %>
+			<%= render :partial => partial_path('snapshot_schedule_form_advanced'), :locals => {:f => f}%>
+			<% else %>
+			<%= render :partial => partial_path('snapshot_schedule_form_simple'), :locals => {:f => f}%>
+			<% end %>
+		</div>
+
+	</fieldset>
+	<br/>
+	<center>
+		<%= button_to_function _('CANCEL'), 'hide_schedule_info();', :class => 'cancel'%><br/><br/>
+		<% if @action == 'update' %>
+		<%= button_to_function _('DELETE'), remote_function(:url => {:action => :delete_snapshot_schedule, :schedule_id => @schedule.id}), :class => 'submit'%><br/><br/>
+		<% end %>
+		<%= submit_tag((@action == 'update') ? _('UPDATE') : _('CREATE'), :class => "submit") %>
+		<br/>
+		<br/>
+	</center>
+</div>

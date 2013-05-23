@@ -1,0 +1,84 @@
+
+<% form_remote_tag :url => {:action => :create}, :html => {:class => 'cssform', :onsubmit => "Form.getInputs(this, null, 'client[quota]')[0].value = calc_quota($('quota').value, $('quota_units').value)"} do %>
+
+<div class="dialog_header">
+	<%= image_tag('user_large.png')%>
+	<span>
+		<h1><%=_('Create Client')%></h1>
+		<%=_('Enter the following information along with the first administrator user information to create a new client')%>
+	</span>
+</div>
+
+
+<div class="dialog_blue">
+<table>
+	<tr>
+		<td>
+			<% css_fields_for :client, @client do |f| %>
+			<fieldset class="text">
+				<%= f.text_field :name, :label => _('Client Name') %>
+				<%= error_message_on :client, :name %>
+			</fieldset>
+			<br/>
+			<fieldset>
+				<%= f.hidden_field :quota %>
+				<div class="form-field">
+					<label for="quota"><%=_('Quota')%></label>
+					<% quota = @client.quota ? @client.quota : 0
+					if quota % 1.terabyte == 0
+						units = 'TB'
+						quota = quota / 1.terabyte
+					elsif quota % 1.gigabyte == 0
+						units = 'GB'
+						quota = quota / 1.gigabyte
+					else
+						units = 'MB'
+						quota = quota / 1.megabyte
+					end
+					%>
+					<%= text_field_tag :quota, quota, :size => 5, :style=>'margin-right: 5px;' %>
+					<%= select_tag :quota_units, options_for_select(['MB', 'GB', 'TB'], units)%>
+				</div>
+				<%= error_message_on :client, :quota%>
+			</fieldset>
+			<% end %>
+			<br/>
+			<fieldset>
+			<%=_('Create a new user that will be the administrator of this client account by filling out the fields on the right')%> &gt;&gt;
+			</fieldset>
+			
+		</td>
+		<td>
+			<% css_fields_for :user, @user do |f| %>
+			<fieldset class="text">
+				
+				<%=f.text_field :name, :label => _('Username') %><br/>
+				<%= error_message_on :user, :name %>
+				
+				<%=f.text_field :first_name%><br/>
+				<%= error_message_on :user, :first_name %>
+
+				<%=f.text_field :last_name%><br/>
+				<%= error_message_on :user, :last_name %>
+
+				<%=f.text_field :email%><br/>
+				<%= error_message_on :user, :email %>
+
+				<%=f.password_field :password %><br/>
+				<%= error_message_on :user, :password %>
+
+				<%=f.password_field :password_confirmation, :label => _('Confirm Password') %><br/>
+				<%= error_message_on :user, :password_confirmation %>
+			</fieldset>
+			<% end %>	
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<%= button_to_function _('CANCEL'), "hide_dialog();", :class => 'cancel' %>
+			<%= submit_tag(_('CREATE'), :class => "submit") %>
+		</td>
+	</tr>
+</table>
+</div>
+<% end %>

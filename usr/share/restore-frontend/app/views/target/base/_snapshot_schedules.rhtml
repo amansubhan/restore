@@ -1,0 +1,43 @@
+<div class="full" style="margin: 5px 5px 5px 5px;">
+<script type="text/javascript">
+show_schedule_info = function() {
+	Effect.SlideDown('snapshot_schedule_info',{duration:0.5});
+}
+hide_schedule_info = function() {
+	Effect.SlideUp('snapshot_schedule_info',{duration:0.5});
+}
+</script>
+
+<div class="subwindow">
+	<div class="subwindow_titlebar">
+		<%=_('Snapshot Schedules')%>
+		<%= link_to_remote image_tag('add.png', :title => _("Add")), :url => {:action => 'new_snapshot_schedule' }%>
+	</div>
+	<div class="scrollable subwindow_content">
+		<table class="listtable">
+			<%= listtable_header([_('Name'), _('Type'), _('Description')])%>
+			<% if @target.schedules.count > 0 %>
+			<% @target.schedules.each do |s|%>
+			<tr>
+				<td><%= link_to_remote s.name, :url => {:action => :edit_snapshot_schedule, :schedule_id => s.id} %></td>
+				<td><%= s[:type] %></td>
+				<td><%= s.human_string %></td>
+			</tr>
+			<% end %>
+			<% else %>
+			<tr>
+				<td colspan="3" align="center" class="no_items">
+					<%=_('No schedules exist')%>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+
+<div id="snapshot_schedule_info" class="dialog window" style="display:none;top:18px;">
+	<div id="snapshot_schedule_info_content" class="dialog_content" style="width: 340px;">
+	</div>
+</div>
+
+</div>

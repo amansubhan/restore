@@ -1,0 +1,5 @@
+<% remote_css_form_for :group, @group, :url => {:action => :create, :client_id => @client.id, :id => @group.id} do |f|%>
+	<% @action = 'create' %>
+	<%= render :partial => 'form', :locals => {:f => f}%>
+
+<% end %>

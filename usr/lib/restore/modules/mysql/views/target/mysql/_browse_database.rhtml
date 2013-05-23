@@ -1,0 +1,42 @@
+<tr id="<%=item.full_id%>">
+	<td>
+		<div style="float: left;">
+			&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>	
+		<div style="width: 10px;float: left;">
+			<%= link_to_remote(item.expanded ? image_tag('minus.png') : image_tag('plus.png'),
+				:url => {:action => 'toggle_tree_item', :tree_item_id => item.full_id})%>
+		</div>
+		<div style="float: left;">
+			
+			<%= image_tag('database.png') %>
+			<%= item.name %>
+		</div>
+	</td>
+	<td>
+		<%=_('Database')%>
+	</td>
+	
+	<td align="right">
+		&nbsp;
+	</td>
+	<td align="right">
+		<%#=item.tables %>
+	</td>
+	<td align="right">
+		<%#=item.rows%>
+	</td>
+
+	<td align="right">
+		<%= human_size item.size%>		
+	</td>
+	<td align="right">
+		<%= item.backup_time.to_formatted_s(:short) rescue ''%>		
+	</td>
+	<td>
+		<%= item.collation%>		
+	</td>
+	<td>
+		&nbsp;
+	</td>
+</tr>

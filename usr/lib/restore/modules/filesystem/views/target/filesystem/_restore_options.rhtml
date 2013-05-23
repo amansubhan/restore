@@ -1,0 +1,39 @@
+<% form_remote_tag :url => {:action => :restore}, :html => {:class => 'cssform'} do |f|%>
+	
+	<div class="dialog_header">
+		<%= image_tag('restore_large.png')%>
+		<span>
+			<h1><%=_('RESTORE Options')%></h1>
+			<%=_('Please select the destination to which you would like to RESTORE')%>
+		</span>
+	</div>
+
+	<div class="dialog_blue">
+		<fieldset>
+			<%= radio_button_tag :type, :inplace %>
+			<label for="type_inplace"><%=_('RESTORE files to orginal location')%></label>
+			<br/>
+			
+			<div class="form-field">
+				<%= radio_button_tag :type, :subdir, false, :onchange => "$('subdir').focus();" %>
+			</div>
+			<div class="form-field" style="margin-left: 3px;">
+				<label for="type_subdir"><%=_('RESTORE files to a subdirectory named:')%></label><br/>
+				<%= text_field_tag :subdir %>
+			</div>
+			
+			<br/>
+			
+			<%= radio_button_tag :type, :zipfile, true %>
+			<label for="type_zipfile"><%=_('Download a ZIP File')%></label>			
+		</fieldset>
+		<br/>
+		<center>
+			<%= button_to_function _('CANCEL'), "hide_dialog();", :class => 'cancel' %>
+			<%= submit_tag(_('GO'), :class => "submit") %><br/>					
+		</center>
+	
+	</div>
+	
+
+<% end %>

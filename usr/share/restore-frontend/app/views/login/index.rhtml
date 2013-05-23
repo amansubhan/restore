@@ -1,0 +1,102 @@
+<%= focus_on_load("user_username") %>
+<!--
+<br/>
+<br/>
+<center>
+<table>
+	<tr>
+		<td>
+			<div id="login">
+				<div>
+					<center>
+					<%= image_tag('logo.gif')%><br/>
+					<%= image_tag('login_user_login.png')%>
+					</center>
+					
+				    <% css_form_for :user, @user, :url => {:action => 'login'} do |f| %>
+							<%= f.text_field :username %><br/>
+							<%= f.password_field :password %><br/>
+							<% if @error %>
+								<%= @error %>
+							<% end %>
+							<br/>
+							<div style="text-align: right;">
+							<%= image_submit_tag 'login_submit_button.png', :style => 'border: none;'%>
+							</div>
+					<% end %>
+				</div>
+				<div class="corner_tl"></div>
+				<div class="corner_tr"></div>
+				<div class="corner_bl"></div>
+				<div class="corner_br"></div>
+				<div class="border_tl"></div>
+				<div class="border_tr"></div>
+				<div class="border_bl"></div>
+				<div class="border_br"></div>
+
+				<div class="border_lt"></div>
+				<div class="border_lb"></div>
+				<div class="border_rt"></div>
+				<div class="border_rb"></div>
+
+				<div class="border_top"></div>
+				<div class="border_left"></div>
+				<div class="border_right"></div>
+				<div class="border_bottom"></div>
+			</div>
+		</td>
+	</tr>
+</table>
+<br>
+<%= image_tag('ruffdogs.png') %><br/>
+<div style="font-size: 8pt;">A division of Holonyx, Inc.</div>
+</center>
+-->
+<br/>
+<br/>
+<br/>
+<% form_for :user, @user, :url => {:action => 'login'} do |f| %>
+<table width="400" border="0" align="center" cellpadding="0" cellspacing="0" background="<%= image_path('login_background.png')%>">
+  <tr>
+    <td height="361" valign="top"><form name="form1" method="post" action="">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="25%" height="164">&nbsp;</td>
+          <td width="52%">&nbsp;</td>
+          <td width="23%">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><%= f.text_field :username %></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="39">&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><%= f.password_field :password %></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><div align="right"><%= image_submit_tag('login_submit_button.png', :style => 'border: none;')%></div></td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+        </form>
+    </td>
+  </tr>
+</table>
+<% end %>
+<p align="center">
+	<b>Version <%=Restore.version%></b><br/><br/>
+	<%=image_tag('ruffdogs.png')%><br/>
+<span class="style1">A division of Holonyx, Inc.</span></p>

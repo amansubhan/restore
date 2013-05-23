@@ -1,0 +1,53 @@
+<% remote_css_form_for :account, @account, :url => {:controller => '/account', :action => :update} do |f|%>
+
+<div class="dialog_header">
+	<%= image_tag('pref_large.png')%>
+	<span>
+		<h1><%=_('Preferences')%></h1>
+		<%=_('Change your personal information and account settings')%>
+	</span>
+</div>
+
+<div class="dialog_blue">
+<table>
+	<tr>
+		<td>
+			<fieldset class="text">
+				<%=f.text_field :name, :label => _('Username') %><br/>
+				<%= error_message_on :account, :name %>
+				
+				<%=f.text_field :first_name%><br/>
+				<%= error_message_on :account, :first_name %>
+
+				<%=f.text_field :last_name%><br/>
+				<%= error_message_on :account, :last_name %>
+
+				<%=f.text_field :email%><br/>
+				<%= error_message_on :account, :email %>
+
+				<%=f.password_field :password %><br/>
+				<%= error_message_on :account, :password %>
+
+				<%=f.password_field :password_confirmation, :label => _('Confirm Password') %><br/>
+				<%= error_message_on :account, :password_confirmation %>
+			</fieldset>
+		</td>
+		<td>
+			<% if @account.class == Restore::Account::User %>
+			<fieldset>
+				<%=f.check_box :email_info, :label => _('Receive Email information notices') %><br/>
+				<%=f.check_box :email_errors, :label => _('Receive email error notices') %><br/>
+				<%=f.check_box :use_home_page, :label => _('Display home help page at startup') %><br/>
+			</fieldset>
+			<% end %>
+
+			<br/>
+			<center>
+				<%= button_to_function _('CANCEL'), "hide_dialog();", :class => 'cancel' %><br/><br/>
+				<%= submit_tag(_('UPDATE'), :class => "submit") %><br/>					
+			</center>
+		</td>
+	</tr>
+</table>
+</div>
+<% end %>

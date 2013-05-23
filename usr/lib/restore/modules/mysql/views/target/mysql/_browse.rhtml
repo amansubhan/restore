@@ -1,0 +1,41 @@
+<script type="text/javascript">
+
+show_info = function() {
+	$('browser_object_info').show();
+}
+hide_info = function() {
+	$('browser_object_info').hide();
+}
+</script>
+
+<%
+@snapshots = @target.full_snapshots
+if @snapshots.size > 0 %>
+	<%= select_tag :snapshot_id,
+		options_for_select(@target.full_snapshots.collect {|s| [s.end_time, s.id]}, @tsession[:snapshot_id].to_i),
+		:onchange => remote_function(:url => {:action => 'set_snapshot'}, :with => "'snapshot_id='+value")
+	%>
+
+
+	<div class="window" style="top:25px;z-index:0;">
+		<div class="titlebar"><%=_('Browse Snapshot')%></div>
+		<div class="scrollable content">
+			<table class="listtable">
+				<%= listtable_header(['', _('Type'), _('Databases'), _('Tables'), _('Rows'), _('Size'), _('Backed Up'), _('Collation'), _('Engine')])%>
+				<%= render :partial => partial_path('browse_item'), :locals => {:item => @tsession[:browse_server]}%>
+			</table>	
+		</div>
+	</div>
+
+	<div class="window" id='browser_object_info' style="top:25px;display:none;z-index:1;">
+		<div class="titlebar">
+			<%=_('Object Info')%>
+			<%= link_to_function 'X', "hide_info();", :class => 'close'%>		
+		</div>
+		<div class="scrollable content" id="browser_object_info_content"/>
+	</div>
+
+
+<% else %>
+	<%=_('No snapshots are available to view.')%>
+<% end %>

@@ -1,0 +1,21 @@
+<table class="listtable">
+	<%= listtable_header([_('Event'), _('Type'), _('Object'), _('Error')])%>
+
+	<% @snapshot.database_logs.each do |dl|%>
+		<tr>
+			<td><%= dl.event %></td>
+			<td><%=_('Database')%></td>
+			<td><%= dl.database.name %></td>
+			<td><%= dl.error %></td>
+		</tr>
+		<% @snapshot.table_logs.find_all_by_database_id(dl.database.id).each do |tl|%>
+		<tr>
+			<td><%= tl.event %></td>
+			<td><%=_('Table')%></td>
+			<td><%= dl.database.name %>.<%= tl.table.name %></td>
+			<td><%= tl.error %></td>
+		</tr>
+		
+		<% end %>
+	<% end %>
+</table>

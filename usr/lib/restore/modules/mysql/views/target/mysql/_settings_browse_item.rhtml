@@ -1,0 +1,6 @@
+<%= render :partial => partial_path(item.partial_name), :locals => {:item => item}%>
+<% if item.expanded %>
+	<% item.children_values.each do |c|%>
+		<%= render :partial => partial_path('settings_browse_item'), :locals => {:item => c}%>
+	<% end %>
+<% end %>	

@@ -1,0 +1,46 @@
+
+	<div class="scrollable">
+		<table class="listtable">
+			<%= listtable_header(['', [_('Quota'), 'align="right"'], [_('Space Used'), 'align="right"'], ''])%>
+			<tfoot>
+				<tr>
+					<td align="right" colspan="1"><%=_('Total')%>:</td>
+					<td align="right"><%= human_size @current_user.clients.sum(:quota) %></td>
+				</tr>
+				<tr>
+					<td align="right" colspan="1"><%=_('Quota')%>:</td>
+					<td align="right">
+						<% if @current_user.quota == 0 %>
+							<%=_('Unlimited')%>
+						<% else %>
+							<%= human_size @current_user.quota %>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" colspan="1"><%=_('Percentage Used')%>:</td>
+					<td align="right">
+						<% if @current_user.quota == 0 %>
+							0.0%
+						<% else %>
+							<%= number_to_percentage (@current_user.clients.sum(:quota).to_f/@current_user.quota)*100, :precision => 1 %>
+						<% end %>
+					</td>
+				</tr>
+			</tfoot>
+			
+			<tbody>
+				<% if @current_user.clients.count > 0 %>
+				<% session[:reseller_client_tree].children_values.each do |c|%>
+					<%= render :partial => partial_path('list_item'), :locals => {:item => c}%>
+				<% end %>
+				<% else %>
+				<tr>
+					<td colspan="4" align="center" class="no_items">
+						<%=_('No clients exist')%>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>		
+	</div>

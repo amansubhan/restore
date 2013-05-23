@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+
+#require File.dirname(__FILE__) + '/../config/boot'
+#require 'commands/server'
+begin
+  require 'rubygems'
+rescue LoadError
+end
+
+require 'daemons'
+require 'pathname'
+RAILS_ROOT = Pathname.new(File.dirname(__FILE__)+'/..').realpath.to_s
+require File.join(RAILS_ROOT, 'config', 'boot')
+
+
+Daemons.run_proc('restore_push', :dir_mode => :normal, :dir => Restore::Config.pid_dir) do
+  def switch_user
+    require 'etc'
+    return unless restore_user = Restore::Config.user
+    pwnam = Etc.getpwnam(restore_user)
+    unless Process::UID.eid == pwnam[2]
+      Process::GID.change_privilege pwnam[3]
+      Process.initgroups pwnam[0], pwnam[3]
+      Process::UID.change_privilege pwnam[2]
+
+      ENV['TMPDIR'] = nil
+      ENV['TMP'] = nil
+      ENV['LOGNAME'] = pwnam[0]
+      ENV['USER'] = ENV['LOGNAME']
+      ENV['USERNAME'] = ENV['LOGNAME']
+      ENV['HOME'] = pwnam[5]
+      ENV['SHELL'] = pwnam[6]
+    end
+  end
+  switch_user
+  
+  require 'juggernaut_server'
+  $LOG = Logger.new(File.join(Restore::Config.log_dir, 'juggernaut.log')) if ENV["RESTORE_ENV"] != 'production'
+  Juggernaut::Debug.send("Starting Juggernaut Push Server\nPort: #{Juggernaut::CONFIG['PUSH_PORT']}\nHost: #{Juggernaut::CONFIG['PUSH_HOST']}")
+  EventMachine::run {
+    EventMachine::start_server Juggernaut::CONFIG['PUSH_HOST'], Juggernaut::CONFIG['PUSH_PORT'].to_i, Juggernaut::PushServer
+  }
+end

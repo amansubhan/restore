@@ -1,0 +1,15 @@
+<tr id="<%=item.full_id%>">
+	<td style="overflow: hidden; white-space: nowrap; cursor: pointer;">
+		<div style="float: left; width: <%=(item.nesting*10)%>px;">&nbsp;</div>
+		<div style="float: left; width: 15px;">&nbsp;</div>
+		<div style="float: left;">
+		<%= image_tag('user.png')%>
+		<%= link_to_remote item.name, :url => {:controller => '/reseller/user', :action => 'edit', :client_id => item.client.id, :id => item.user.id}%>
+		</div>
+	</td>
+	<td colspan="2">
+	</td>
+	<td>
+		<%= button_to_function _('Switch To User'), remote_function(:url => {:controller => '/reseller/user', :action => 'switch_to', :client_id => item.client.id, :id => item.user.id}), :class => 'blue' %>
+	</td>
+</tr>

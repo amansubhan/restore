@@ -1,0 +1,70 @@
+<table class="listtable">
+	<%= listtable_header([_('Username'), _('First Name'), _('Last Name'), _('Email Address'), _('Quota'), _('Quota Used'), '', ''])%>
+	<tfoot>
+		<tr>
+			<td align="right" colspan="4"><%=_('Total')%>:</td>
+			<td align="right"><%= human_size Restore::Account::Reseller.sum(:quota) %></td>
+		</tr>
+		<tr>
+			<td align="right" colspan="4"><%=_('Quota')%>:</td>
+			<td align="right">
+				<% if Restore::Config.quota == 0 %>
+				<%=_('Unlimited')%>
+				<% else %>
+				<%= human_size Restore::Config.quota %>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" colspan="4"><%=_('Percentage Used')%>:</td>
+			<td align="right">
+				<% if Restore::Config.quota == 0 %>
+				0.0%
+				<% else %>
+				<%= number_to_percentage (Restore::Account::Reseller.sum(:quota).to_f/Restore::Config.quota)*100, :precision => 1 %>
+				<% end %>
+			</td>
+		</tr>
+	</tfoot>
+
+
+	<tbody>
+		<% resellers = Restore::Account::Reseller.find(:all) %>
+		<% if resellers.size > 0 %>
+		<% resellers.each do |u|%>
+		<tr>
+			<td align="left">
+				<%= link_to_remote u.name, :url => {:controller => '/datacenter/reseller', :action => 'edit', :id => u.id}%>
+			</td>
+			<td align="left"><%=u.first_name%></td>
+			<td align="left"><%=u.last_name%></td>
+			<td align="left"><%=u.email%></td>
+
+			<td align="right"><%= human_size u.quota %></td>
+
+			<td align="right"><%= human_size u.quota_used %></td>
+
+			<td align="right">
+				<% if percentage = u.quota_used_percentage %>
+				<div style="float: left; width: 100px; background-color: #76a2d1;">
+					<div style="float: left; width: <%=percentage%>px; background-color: #3d5779;">
+						&nbsp;
+					</div>
+				</div>
+				<% end %>
+			</td>
+
+			<td align="left">
+				<%= button_to_function _('Switch To User'), remote_function(:url => {:controller => '/datacenter/reseller', :action => 'switch_to', :id => u.id}), :class => 'blue'%>
+			</td>
+		</tr>
+		<% end %>
+		<% else %>
+		<tr>
+			<td colspan="8" align="center" class="no_items">
+				<%=_('No resellers exist')%>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

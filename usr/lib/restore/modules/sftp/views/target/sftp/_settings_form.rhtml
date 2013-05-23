@@ -1,0 +1,15 @@
+<%= render :partial => super_partial_path('settings_form')%>	
+<hr/>
+
+
+<% remote_css_form_for :target, @target, :url =>{:action => 'install_key'} do |f|%>
+		
+	<% fieldset_tag _('Install Public Key') do %>
+		<textarea nowrap rows="3" style="width: 100%;white-space:nowrap;"><%= @target.pubkey %></textarea><br/><br/>
+		<%= f.password_field :password %><br/>
+	<% end %>
+	<br/>
+	<center>
+	<%= submit_tag 'Install', :class => 'submit'%>
+	</center>
+<% end %>

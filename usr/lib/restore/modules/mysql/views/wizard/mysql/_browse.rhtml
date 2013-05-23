@@ -1,0 +1,7 @@
+
+
+<table class="listtable">
+	<%= listtable_header(['', _('Type'), _('Size'), _('Created'), _('Updated'), _('Engine')])%>
+	<%= render :partial => partial_path('browse_item'), :locals => {:item => @mysql_browser_root}%>
+	
+</table>

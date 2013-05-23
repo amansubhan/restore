@@ -1,0 +1,74 @@
+<div class="dialog_header">
+	<%= image_tag('reseller_large.png')%>
+	<span>
+		<h1><%= (@action == 'create' ? _('Add Reseller') : _('Edit Reseller')) %></h1>
+		<% if @action == 'create' %>
+		<%=_('Enter the following information to create a new reseller account')%>
+		<% else %>
+		<%=_('Enter the following information to update this reseller account')%>
+		<% end %>
+	</span>
+</div>
+
+<div class="dialog_blue">
+<table>
+	<tr>
+		<td>	
+			<fieldset class="text">
+				<%=f.text_field :name, :label => _('Reseller name') %><br/>
+				<%= error_message_on :reseller, :name %>
+				
+				<%=f.text_field :first_name%><br/>
+				<%= error_message_on :reseller, :first_name %>
+				
+				<%=f.text_field :last_name%><br/>
+				<%= error_message_on :reseller, :last_name %>
+				
+				<%=f.text_field :email%><br/>
+				<%= error_message_on :reseller, :email %>
+				
+				<%=f.password_field :password%><br/>
+				<%= error_message_on :reseller, :password %>
+				
+				<%=f.password_field :password_confirmation, :label => _('Confirm password')%><br/>
+				<%= error_message_on :reseller, :password_confirmation %>
+				
+			</fieldset>
+		</td>
+		<td>
+			<fieldset>
+				<%= f.hidden_field :quota %>
+
+				<div class="form-field">
+					<label for="quota"><%=_('Quota')%></label>
+					<% quota = @reseller.quota ? @reseller.quota : 0
+					if quota % 1.terabyte == 0
+						units = 'TB'
+						quota = quota / 1.terabyte
+					elsif quota % 1.gigabyte == 0
+						units = 'GB'
+						quota = quota / 1.gigabyte
+					else
+						units = 'MB'
+						quota = quota / 1.megabyte
+					end
+					%>
+					<%= text_field_tag :quota, quota, :size => 5, :style =>"margin-right: 5px;" %>
+					<%= select_tag :quota_units, options_for_select(['MB', 'GB', 'TB'], units)%>
+				</div>
+				<%= error_message_on :reseller, :quota %><br/>
+				
+			</fieldset>
+			<br/>
+			<center>
+				<%= button_to_function _('CANCEL'), "hide_dialog();", :class => 'cancel' %><br/><br/>
+				<% if @action == 'update' %>
+					<%= button_to_function _('DELETE'), remote_function(:url => {:action => :delete, :id => @reseller.id}), :class => 'submit' %><br/><br/>
+				<% end %>
+				<%= submit_tag((@action == 'update') ? _('UPDATE') : _('CREATE'), :class => "submit") %><br/><br/>
+			</center>
+		</td>
+	</tr>
+</table>
+</div>
+

@@ -1,0 +1,48 @@
+<tr id="<%=item.full_id%>">
+	<td>
+		<div style="float: left;">
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>	
+		<div style="width: 10px;float: left;">
+		</div>
+		<div style="float: left;">
+			<%= check_box_tag "selected[#{item.full_id}]", '1', item.selected,
+				:onclick => remote_function(:url => {:action => 'select_tree_item', :tree_item_id => item.full_id}, :with => "'value='+(checked?'1':'0')") %>		
+			
+			<%= image_tag('table_gear.png') %>			
+			<%= item.name %>
+		</div>
+	</td>
+	<td>
+		<%=_('Routine')%>
+	</td>
+
+	<td align="right">
+		&nbsp;
+	</td>
+	<td align="right">
+		&nbsp;
+	</td>
+	<td align="right">
+		&nbsp;
+	</td>
+	<td align="right">
+		&nbsp;
+	</td>
+	<td align="right">
+		&nbsp;
+	</td>
+	<td>
+		<%= item.extra[:created]%>		
+	</td>
+	<td>
+		<%= item.extra[:updated]%>		
+	</td>
+	<td>
+		&nbsp;
+	</td>
+	<td>
+		&nbsp;
+	</td>
+</tr>

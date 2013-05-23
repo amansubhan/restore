@@ -1,0 +1,52 @@
+#!/bin/bash
+#set -e
+
+case "$1" in
+	"configure"|"reconfigure"|"upgrade")
+		dbc_generate_include='template:/etc/restore/database.yml'
+		dbc_generate_include_args="-o template_infile=/usr/share/doc/restore-dc-common/database.yml.sample"
+
+		. /usr/share/debconf/confmodule
+		. /usr/share/dbconfig-common/dpkg/postinst
+		dbc_go restore-dc-common $@
+
+		echo "Migrating database"
+		/usr/bin/restore upgrade
+
+		chgrp -R restore /var/lib/restore 2>/dev/null || addgroup --system restore
+		chown -R restore /var/lib/restore 2>/dev/null ||
+			adduser --system --home /var/lib/restore --no-create-home --disabled-password --ingroup restore restore
+		
+		chown -R restore:restore /var/lib/restore 
+		chown restore:restore /etc/restore/restore.yml
+		chown restore:restore /etc/restore/database.yml
+		chmod 640 /etc/restore/database.yml
+		chown -R restore:restore /var/log/restore
+		touch /var/log/restore/restore.log
+		chmod 0660 /var/log/restore/restore.log
+
+		if [ $1 != "upgrade" ]; then
+			if [ "restore-dc" == "restore-dc" ]; then
+				/usr/lib/restore/script/runner "Restore::Account::DCAdmin.create(:name => 'admin', :password => 'password')"
+			else
+				/usr/lib/restore/script/runner "Restore::Account::User.create(:name => 'admin', :password => 'password', :admin => true)"
+			fi
+
+		fi
+		db_stop
+	;;
+esac
+
+# Automatically added by dh_installinit
+if [ -x "/etc/init.d/restore-backend" ]; then
+	update-rc.d restore-backend defaults >/dev/null
+	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+		invoke-rc.d restore-backend start || exit $?
+	else
+		/etc/init.d/restore-backend start || exit $?
+	fi
+fi
+# End automatically added section
+
+
+exit 0

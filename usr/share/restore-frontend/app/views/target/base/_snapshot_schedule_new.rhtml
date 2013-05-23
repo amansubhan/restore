@@ -1,0 +1,4 @@
+<% remote_css_form_for :schedule, @schedule, :url => {:action => :create_snapshot_schedule} do |f|%>
+	<% @action = 'create' %>
+	<%= render :partial => partial_path('snapshot_schedule_form'), :locals => {:f => f}%>
+<% end %>

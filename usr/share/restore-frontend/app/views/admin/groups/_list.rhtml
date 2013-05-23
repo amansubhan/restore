@@ -1,0 +1,25 @@
+	<div class="scrollable" style="top: 0px;">
+		<table class="listtable">
+			<%= listtable_header([_('Group Name'), _('Members')])%>
+			<tbody>
+				<% if @current_install.groups.count > 0 %>
+				<% @current_install.groups.each do |g|%>
+					<tr>
+						<td align="left">
+							<%= link_to_remote g.name, :url => {:action => 'edit', :id => g.id}%>
+						</td>
+						<td align="left">
+							<%= g.users.collect{|u| u.name}.join(', ')%>
+						</td>
+					</tr>
+				<% end %>
+				<% else %>
+				<tr>
+					<td colspan="2" align="center" class="no_items">
+						<%=_('No groups exist')%>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>		
+	</div>

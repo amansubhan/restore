@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+
+
+begin
+  require 'rubygems'
+rescue LoadError
+end
+
+require 'etc'
+require 'pathname'
+
+script_dir = Pathname.new(File.dirname(__FILE__)).realpath
+RESTORE_ROOT = Pathname.new(File.dirname(__FILE__)+'/..').realpath.to_s
+$LOAD_PATH << File.join(RESTORE_ROOT, 'lib')
+
+def switch_user
+  return unless restore_user = Restore::Config.user
+  pwnam = Etc.getpwnam(restore_user)
+  unless Process::UID.eid == pwnam[2]
+    Process::GID.change_privilege pwnam[3]
+    Process.initgroups pwnam[0], pwnam[3]
+    Process::UID.change_privilege pwnam[2]
+
+    ENV['TMPDIR'] = nil
+    ENV['TMP'] = nil
+    ENV['LOGNAME'] = pwnam[0]
+    ENV['USER'] = ENV['LOGNAME']
+    ENV['USERNAME'] = ENV['LOGNAME']
+    ENV['HOME'] = pwnam[5]
+    ENV['SHELL'] = pwnam[6]
+  end
+end
+
+cmd = ARGV[0]
+case cmd
+when 'setup'
+  require 'restore/commands/setup'
+when 'console'
+  require 'restore/commands/console'
+when 'snap'
+  require 'restore/commands/snap'
+when 'clean'
+  require 'restore/commands/clean'
+when 'duplicate'
+  require 'restore/commands/duplicate'
+when 'start', 'stop', 'restart', 'run', 'zap'
+  require 'restore/commands/backend'
+else
+  puts "Usage: restore <command> <command_options>"
+  puts
+  puts "Commands:"
+  puts "    setup               Run configuration utility"
+  puts "    console             Run ruby console"
+  puts "    snap                Run a snapshot"
+  puts "    clean               Clean a target (removes all snapshots)"
+  puts "    duplicate           Duplicate a target"
+  puts "    prune               Cleans old files from a snapshot"
+  puts "    start               Start backend server"
+  puts "    stop                Stop backend server"
+  puts "    run                 Run background server in foreground"
+  puts "    zap                 "
+  puts
+end

@@ -1,0 +1,12 @@
+
+<% remote_css_form_for :target, @target, :url =>{:action => 'update'} do |f|%>
+	<% fieldset_tag _('Main Options') do %>
+		<%= f.text_field :name, :label => 'Target Name' %><br/>
+	<% end %>
+	<br/>
+	<%= render :partial => partial_path('settings_form_module'), :locals => {:f => f}%>
+	<br/>
+	<center>
+	<%= submit_tag 'Update', :class => 'submit'%>
+	</center>
+<% end %>

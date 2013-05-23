@@ -1,0 +1,166 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: restore modules/mysql module 4.0\n"
+"POT-Creation-Date: 2007-12-06 09:08-0700\n"
+"PO-Revision-Date: 2007-12-05 15:56-0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: init.rb:21
+msgid "MySQL allows you to backup MySQL databases"
+msgstr ""
+
+#: init.rb:25
+msgid "MySQL"
+msgstr ""
+
+#: snapper.rb:103
+msgid "Copying table"
+msgstr ""
+
+#: snapper.rb:131
+msgid "Copying view"
+msgstr ""
+
+#: snapper.rb:213
+msgid "Copying"
+msgstr ""
+
+#: snapper.rb:436 snapper.rb:438
+msgid "Deleting '%s' from snapshot %s"
+msgstr ""
+
+#: views/wizards/mysql/_server_text.rhtml:1
+msgid ""
+"Please give RESTORE the login info to your corresponding access type. Then "
+"proceed to the next step."
+msgstr ""
+
+#: views/wizards/mysql/_browse_routine.rhtml:18
+msgid "Routine"
+msgstr ""
+
+#: views/wizards/mysql/_browse_table.rhtml:23
+#: views/target/mysql/_browse_table.rhtml:20
+msgid "View"
+msgstr ""
+
+#: views/wizards/mysql/_browse_table.rhtml:25
+#: views/target/mysql/_snapshot_info.rhtml:14
+#: views/target/mysql/_browse_table.rhtml:22
+#: views/target/mysql/_browse_table_info.rhtml:8
+msgid "Table"
+msgstr ""
+
+#: views/wizards/mysql/_browse_database.rhtml:19
+#: views/target/mysql/_snapshot_info.rhtml:7
+#: views/target/mysql/_browse_database.rhtml:17
+#: views/target/mysql/_browse_table_info.rhtml:3
+msgid "Database"
+msgstr ""
+
+#: views/wizards/mysql/_browse.rhtml:5
+#: views/target/mysql/_snapshot_info.rhtml:2
+#: views/target/mysql/_browse.rhtml:24
+msgid "Type"
+msgstr ""
+
+#: views/wizards/mysql/_browse.rhtml:5 views/target/mysql/_browse.rhtml:24
+msgid "Databases"
+msgstr ""
+
+#: views/wizards/mysql/_browse.rhtml:5 views/target/mysql/_browse.rhtml:24
+msgid "Tables"
+msgstr ""
+
+#: views/wizards/mysql/_browse.rhtml:5 views/target/mysql/_browse.rhtml:24
+msgid "Rows"
+msgstr ""
+
+#: views/wizards/mysql/_browse.rhtml:5 views/target/mysql/_browse.rhtml:24
+#: views/target/mysql/_browse_table_info.rhtml:32
+msgid "Size"
+msgstr ""
+
+#: views/wizards/mysql/_browse.rhtml:5
+msgid "Index Size"
+msgstr ""
+
+#: views/wizards/mysql/_browse.rhtml:5
+msgid "Created"
+msgstr ""
+
+#: views/wizards/mysql/_browse.rhtml:5
+msgid "Updated"
+msgstr ""
+
+#: views/wizards/mysql/_browse.rhtml:5 views/target/mysql/_browse.rhtml:24
+msgid "Collation"
+msgstr ""
+
+#: views/wizards/mysql/_browse.rhtml:5 views/target/mysql/_browse.rhtml:24
+msgid "Engine"
+msgstr ""
+
+#: views/wizards/mysql/_browse_server.rhtml:17
+#: views/target/mysql/_browse_server.rhtml:15
+msgid "Server"
+msgstr ""
+
+#: views/wizards/mysql/_browse_text.rhtml:1
+msgid ""
+"Here you can select the databases and tables that you wish to include in "
+"your new target."
+msgstr ""
+
+#: views/target/mysql/_snapshot_info.rhtml:2
+#: views/target/mysql/_browse_table_info.rhtml:29
+msgid "Event"
+msgstr ""
+
+#: views/target/mysql/_snapshot_info.rhtml:2
+msgid "Object"
+msgstr ""
+
+#: views/target/mysql/_snapshot_info.rhtml:2
+#: views/target/mysql/_browse_table_info.rhtml:12
+msgid "Error"
+msgstr ""
+
+#: views/target/mysql/_browse.rhtml:21
+msgid "Browse Snapshot"
+msgstr ""
+
+#: views/target/mysql/_browse.rhtml:24
+msgid "Backed Up"
+msgstr ""
+
+#: views/target/mysql/_browse.rhtml:32
+msgid "Object Info"
+msgstr ""
+
+#: views/target/mysql/_browse.rhtml:40
+msgid "No snapshots are available to view."
+msgstr ""
+
+#: views/target/mysql/_browse_table_info.rhtml:26
+msgid "Revisions"
+msgstr ""
+
+#: views/target/mysql/_browse_table_info.rhtml:30
+msgid "Modification Date"
+msgstr ""
+
+#: views/target/mysql/_browse_table_info.rhtml:31
+msgid "Backed up"
+msgstr ""

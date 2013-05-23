@@ -1,0 +1,39 @@
+
+<table width="100%">
+	<tr>
+		<td><%=_('Filename')%>:</td>
+		<td><%=file.filename%></td>
+	</tr>
+	<tr>
+		<td><%=_('Error')%>:</td>
+		<td><%= log.error %></td>
+	</tr>
+	<% if log.extra %>
+		<% log.extra.each_pair do |k,v|%>
+		<tr>
+			<td><%= k %></td>
+			<td><%= v %></td>
+		</tr>
+		<% end %>
+	<% end %>
+</table>
+
+<table width="100%">
+	<caption><%=_('Revisions')%></caption>
+	<thead>
+		<tr>
+			<th><%=_('Event')%></th>
+			<th><%=_('Modification Date')%></th>
+			<th><%=_('Backed up')%></th>
+			<th><%=_('Size')%></th>
+		</tr>
+	</thead>		
+	<% file.logs.each do |r| %>
+	<tr>
+		<td><%= r.event %></td>
+		<td><%= r.mtime %></td>
+		<td><%= r.btime %></td>
+		<td><%= human_size r.local_size %></td>
+	</tr>		
+	<% end %>
+</table>

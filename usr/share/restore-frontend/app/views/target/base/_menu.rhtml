@@ -1,0 +1,20 @@
+<div class="tabs"><nobr>
+<%= link_to_remote '<span>'+_('Snapshots')+'</span>', {:url => {:action => 'show_panel', :panel => 'info'}}, :class => "tab snapshots #{(@tsession[:panel] == 'info') ? 'current' : ''}"%><%=
+link_to_remote '<span>'+_('Restore Data')+'</span>', {:url => {:action => 'show_panel', :panel => 'restore'}}, :class => "tab restore #{(@tsession[:panel] == 'restore') ? 'current' : ''}"%><%=
+link_to_remote '<span>'+_('Console')+'</span>', {:url => {:action => 'show_panel', :panel => 'console'}}, :class => "tab console #{(@tsession[:panel] == 'console') ? 'current' : ''}"%><%=
+link_to_remote '<span>'+_('Settings')+'</span>', {:url => {:action => 'show_panel', :panel => 'settings'}}, :class => "tab settings #{(@tsession[:panel] == 'settings') ? 'current' : ''}"%><%=
+link_to_remote '<span>'+_('Permissions')+'</span>', {:url => {:action => 'show_panel', :panel => 'permissions'}}, :class => "tab permissions #{(@tsession[:panel] == 'permissions') ? 'current' : ''}"%><%=
+link_to_remote '<span>'+_('Schedule')+'</span><span class="end"></span>', {:url => {:action => 'show_panel', :panel => 'schedules'}}, :class => "tab schedule #{(@tsession[:panel] == 'schedules') ? 'current' : ''}"%>
+</div>
+
+<div class="buttons">
+<% if @target.running_snapshot %>
+	<%= link_to_remote(image_tag('but_stopsnapshot.png', :title => _('Stop Snapshot')), {:url => {:action => 'stop'},
+	:confirm => _('Are you sure you want to stop the running snapshot?')}) %>
+<% else %>
+	<%= link_to_remote image_tag('but_startsnapshot.png', :title => _('Start Snapshot')), {:url => {:action => 'start'}} %>
+<% end %>
+<%= link_to_remote(image_tag('but_delete.png', :title => 'Delete Target'),
+	{:url => {:action => 'confirm_delete'},
+	:confirm => _('Are you sure you want to delete this target?')}) %>
+</div>

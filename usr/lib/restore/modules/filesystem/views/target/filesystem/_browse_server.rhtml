@@ -1,0 +1,28 @@
+<tr id="<%=item.full_id%>">
+	<td style="overflow: hidden; white-space: nowrap; cursor: pointer;">
+		<div style="float: left; width: 0px;">&nbsp;</div>
+		<div style="float: left; width: 15px;">
+			<%= link_to_remote(item.expanded ? image_tag('minus.png') : image_tag('plus.png'),
+				:url => {:action => 'toggle_tree_item', :tree_item_id => item.full_id})%>
+		</div>
+		<div style="float: left;">
+			<%#= link_to_remote image_tag(file.selected_image+'.png', :id => "select_#{file.id}"),
+			#	:url => {:action => 'browser_toggle_selection', :file_id => file.id}
+			%>
+		<%= image_tag('server.png')%>
+		<%=item.name%>
+		</div>
+	</td>
+	<td align="right"  width="100">
+		&nbsp;
+	</td>
+	<td align="right"  width="100">
+		&nbsp;
+	</td>
+	<td width="200">
+		<%=item.mtime.to_formatted_s(:short) rescue ''%>
+	</td>
+	<td width="200">
+		<%=item.btime.to_formatted_s(:short) rescue ''%>
+	</td>
+</tr>

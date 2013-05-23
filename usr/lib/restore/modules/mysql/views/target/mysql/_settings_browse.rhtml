@@ -1,0 +1,5 @@
+
+<table class="listtable">
+	<%= listtable_header(['', _('Type'), _('Size')])%>
+	<%= render :partial => partial_path('settings_browse_item'), :locals => {:item => @tsession[:settings_browser]}%>
+</table>

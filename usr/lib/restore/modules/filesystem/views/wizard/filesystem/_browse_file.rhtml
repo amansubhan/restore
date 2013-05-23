@@ -1,0 +1,33 @@
+<tr id="<%=item.full_id%>">
+	<td>
+		<div style="float: left;">
+		<%item.nesting.times do %>&nbsp;&nbsp;&nbsp;&nbsp;<%end%>
+		</div>	
+		<div style="width: 10px;float: left;">
+			&nbsp;
+		</div>
+		<div style="float: left;">
+			<%= check_box_tag "selected[#{item.full_id}]", '1', item.selected,
+				:onclick => remote_function(:url => {:action => 'select_tree_item', :tree_item_id => item.full_id}, :with => "'value='+(checked?'1':'0')") %>
+		<% if item.file_type == 'F' %>
+			<%=image_tag('file.png')%>
+		<% else %>
+			?
+		<% end %>
+		
+		<%=item.name%>
+		
+		<% if item.error %>
+			(<%= item.error %>)
+		<% end %>
+		</div>
+	</td>
+
+	<td align="right">
+		<%=item.mtime.to_formatted_s(:short) rescue ''%>
+	</td>
+
+	<td align="right">
+		<%=human_size(item.size)%>
+	</td>
+</tr>

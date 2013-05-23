@@ -1,0 +1,15 @@
+
+<div class="titlebar">
+	<%=_('Clients')%>
+</div>
+
+<div class="tabbar">
+	<%=_('Click on the name of a client, user or group to modify or delete it')%>
+	<div class="buttons">
+		<%= button_to_function(_('Add Client'), remote_function(:url => {:controller => '/reseller/client', :action => 'new'}), :class => 'add')%>
+	</div>
+</div>
+
+<div class="panel has_tabs" id="clients">
+<%= render :partial => partial_path('list')%>
+</div>

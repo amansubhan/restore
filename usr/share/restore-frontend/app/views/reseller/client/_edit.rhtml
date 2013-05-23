@@ -1,0 +1,66 @@
+
+<% remote_css_form_for :client, @client, :url => {:action => :update, :id => @client.id}, :html => {:onsubmit => "Form.getInputs(this, null, 'client[quota]')[0].value = calc_quota($('quota').value, $('quota_units').value)"} do |f|%>
+	<% @action = 'update' %>
+	
+	
+	<div class="dialog_header">
+		<%= image_tag('user_large.png')%>
+		<span>
+			<h1><%=_('Edit Client')%></h1>
+			<% if @action == 'create' %>
+				<%=_('Enter the following information to create a new client')%>
+			<% else %>
+				<%=_('Enter the following information to update this client')%>
+			<% end %>
+		</span>
+	</div>
+
+	<div class="dialog_blue">
+	<table>
+		<tr>
+			<td>
+				<fieldset class="text">
+					<%=f.text_field :name, :label => _('Client name') %><br/>
+					<%= error_message_on :client, :name %>
+					
+				</fieldset>
+			</td>
+			<td>
+				<fieldset>
+					<%= f.hidden_field :quota %>
+
+					<div class="form-field">
+						<label for="quota"><%=_('Quota')%></label>
+						<% quota = @client.quota ? @client.quota : 0
+						if quota % 1.terabyte == 0
+							units = 'TB'
+							quota = quota / 1.terabyte
+						elsif quota % 1.gigabyte == 0
+							units = 'GB'
+							quota = quota / 1.gigabyte
+						else
+							units = 'MB'
+							quota = quota / 1.megabyte
+						end
+						%>
+						<%= text_field_tag :quota, quota, :size => 5, :style =>"margin-right: 5px;" %>
+						<%= select_tag :quota_units, options_for_select(['MB', 'GB', 'TB'], units)%>
+					</div>
+					<%= error_message_on :client, :quota%>
+				</fieldset>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<center>
+					<%= button_to_function _('CANCEL'), "hide_dialog();", :class => 'cancel' %><br/><br/>
+					<% if @action == 'update' %>
+						<%= button_to_function _('DELETE'), remote_function(:url => {:action => :delete, :id => @client.id}), :class => 'submit' %><br/><br/>
+					<% end %>
+					<%= submit_tag(_('UPDATE'), :class => "submit") %><br/><br/>
+				</center>
+			</td>
+		</tr>
+	</table>
+	
+<% end %>

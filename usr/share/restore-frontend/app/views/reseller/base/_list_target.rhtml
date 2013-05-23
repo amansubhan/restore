@@ -1,0 +1,18 @@
+<tr id="<%=item.full_id%>">
+	<td style="overflow: hidden; white-space: nowrap; cursor: pointer;">
+		<div style="float: left; width: <%=(item.nesting*10)%>px;">&nbsp;</div>
+		<div style="float: left; width: 15px;">&nbsp;</div>
+		<div style="float: left;">
+		<%= image_tag('drive.png')%>
+		<%= item.name %>
+		</div>
+	</td>
+	<td align="right">
+		<%#= human_size item.client.quota %>
+	</td>
+
+	<td align="right">
+		<%= human_size item.target.size %>
+	</td>
+	
+</tr>

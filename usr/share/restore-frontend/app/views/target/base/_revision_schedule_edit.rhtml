@@ -1,0 +1,5 @@
+<% remote_css_form_for :revision_schedule, @revision_schedule, :url => {:action => :update_revision_schedule, :revision_schedule_id => @revision_schedule.id} do |f|%>
+	<% @action = 'update' %>
+	
+	<%= render :partial => partial_path('revision_schedule_form'), :locals => {:f => f, :action => 'update'}%>
+<% end %>

@@ -1,0 +1,173 @@
+body {
+	background-color: white;
+}
+div#login {
+	background-color: #245694;
+	position: relative;
+	padding: 27px;
+	color: #ccc;
+	font-weight: bold;    
+}
+div#login div.corner_tl {
+  width: 27px;
+  height: 27px;
+  left: 0px;
+  top: 0px;  
+  background: url(../images/login_corner_tl.png) no-repeat top left;
+  position: absolute;
+}
+
+div#login div.corner_tr {
+  width: 27px;
+  height: 27px;
+  right: 0px;
+  top: 0px;  
+  background: url(../images/login_corner_tr.png) no-repeat top right;
+  position: absolute;
+}
+
+div#login div.corner_bl {
+  width: 27px;
+  height: 27px;
+  left: 0px;
+  bottom: 0px;  
+  background: url(../images/login_corner_bl.png) no-repeat bottom left;
+  position: absolute;
+}
+
+div#login div.corner_br {
+  width: 27px;
+  height: 27px;
+  right: 0px;
+  bottom: 0px;  
+  background: url(../images/login_corner_br.png) no-repeat bottom right;
+  position: absolute;
+}
+
+div#login div.border_tl {
+  width: 82px;
+  height: 11px;
+  left: 27px;
+  top: 0px;  
+  background: url(../images/login_border_tl.png) no-repeat top left;
+  position: absolute;
+}
+
+div#login div.border_tr {
+  width: 82px;
+  height: 11px;
+  right: 27px;
+  top: 0px;  
+  background: url(../images/login_border_tr.png) no-repeat top right;
+  position: absolute;
+}
+
+div#login div.border_br {
+  width: 82px;
+  height: 11px;
+  right: 27px;
+  bottom: 0px;  
+  background: url(../images/login_border_br.png) no-repeat bottom right;
+  position: absolute;
+}
+
+div#login div.border_bl {
+  width: 82px;
+  height: 11px;
+  left: 27px;
+  bottom: 0px;  
+  background: url(../images/login_border_bl.png) no-repeat bottom left;
+  position: absolute;
+}
+
+div#login div.border_lt {
+  top: 27px;
+  height: 62px;
+  width: 11px;
+  left: 0px;  
+  background: url(../images/login_border_lt.png) no-repeat top left;
+  position: absolute;
+}
+
+div#login div.border_lb {
+  bottom: 27px;
+  height: 62px;
+  width: 11px;
+  left: 0px;  
+  background: url(../images/login_border_lb.png) no-repeat bottom left;
+  position: absolute;
+}
+
+div#login div.border_rt {
+  top: 27px;
+  height: 62px;
+  width: 10px;
+  right: 0px;  
+  background: url(../images/login_border_rt.png) no-repeat top right;
+  position: absolute;
+}
+
+div#login div.border_rb {
+  bottom: 27px;
+  height: 62px;
+  width: 10px;
+  right: 0px;  
+  background: url(../images/login_border_rb.png) no-repeat bottom right;
+  position: absolute;
+}
+
+
+div#login div.border_top {
+  top: 0px;
+  left: 109px;
+  right: 109px;
+  height: 11px;
+  background: url(../images/login_border_top.png) repeat-x top;
+  position: absolute;
+}
+
+div#login div.border_bottom {
+  bottom: 0px;
+  left: 109px;
+  right: 109px;
+  height: 11px;
+  background: url(../images/login_border_bottom.png) repeat-x bottom;
+  position: absolute;
+}
+
+div#login div.border_right {
+  top: 89px;
+  bottom: 89px;
+  right: 0px;
+  width: 10px;
+  background: url(../images/login_border_right.png) repeat-y right;
+  position: absolute;
+}
+
+div#login div.border_left {
+  top: 89px;
+  bottom: 89px;
+  left: 0px;
+  width: 11px;
+  background: url(../images/login_border_left.png) repeat-y left;
+  position: absolute;
+}
+
+
+div#login div.bg_top {
+  top: 11px;
+  height: 89px;
+  left: 11px;
+  right: 10px;
+  background: url(../images/login_bg_top.png) repeat-x top;
+  position: absolute;
+}
+
+div#login div.bg_bottom {
+  bottom: 11px;
+  height: 99px;
+  left: 11px;
+  right: 10px;
+  background: url(../images/login_bg_bottom.png) repeat-x bottom;
+  position: absolute;
+}

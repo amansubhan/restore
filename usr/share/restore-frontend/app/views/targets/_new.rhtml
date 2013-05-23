@@ -1,0 +1,54 @@
+<div class="titlebar">
+	<%=_('New Target Wizard')%>
+</div>
+
+<div style="position: absolute; top: 22px; left: 0px; right: 0px; bottom: 0px;">
+
+	<div style="position: absolute; top: 5px; left: 25px; right: 25px;">
+		<%= image_tag('target.png')%>
+	</div>
+	<div style="position: absolute; top: 5px; left: 115px; width:50%; padding: 5px;">
+		<div style="font-size: 16pt; text-decoration: underline;"><%=_('Target Wizard - Step')%> 1</div>
+		<%=_("With RESTORE's easy to use target Wizard you have the ability to create targets to manage with a few simple steps. In step 1 please enter the access type to the	data you would like to manage.")%>
+	</div>
+
+	<% form_remote_tag :url => {:controller => '/targets', :action => 'start_wizard'}, :html => {:class => 'cssform'} do %>
+
+	<div class="scrollable" style="border: 2px solid black; top: 100px; bottom: 40px; left:25px; right: 25px; background-color: #efefef;">
+
+		<br/>
+		<br/>
+			<% if @error %>
+			<span style="color: red;"><%=@error %></span>
+			<% end %>
+			<table  style="border: 2px solid black; background: white; margin-left: auto; margin-right: auto;">
+				<% modules = Restore::Modules.enabled_modules.values.reject {|m| m.abstract }%>
+				<% (modules.size+1 / 2).times do |i| %>
+				<tr>
+					<% 2.times do |j| %>
+					<% index = (i*2)+j %>
+					<% next unless modules[index] %>
+					<% m = modules[index] %>
+					<td width="5%" height="28" align="right">
+						<%= radio_button_tag :type_select, m.name, false %>
+					</td>
+					<td><%= m.human_name %></td>
+					<td width="18%">
+						<%= tooltip("/modules/#{m.name}/new") %>
+					</td>
+					<% end %>
+				</tr>
+				<% end %>
+			</table>
+	</div>
+
+	<div style="position: absolute; bottom: 0px; left: 25px; right: 25px; text-align: middle; height: 40px;">
+		<div style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 5px;"><center>
+			<%= button_to_function _('CANCEL'), remote_function(:url => {:action => 'index'}), :class => 'cancel' %>
+		</center></div>
+		<div style="position: absolute; bottom: 0px; right: 0px; padding: 5px;">
+			<%= submit_tag(_('NEXT'), :class => "submit") %>		
+		</div>
+	</div>
+	<% end %>
+</div>

@@ -1,0 +1,16 @@
+<div class="titlebar">
+	<center><%=_('Administration')%></center>
+</div>
+
+<div class="tabbar">
+	<div class="tabs">
+		<%= render :partial => partial_path('menu') %>
+	</div>
+	<div class="buttons">
+		<%= render :partial => partial_path('buttons') %>
+	</div>
+</div>
+
+<div class="panel has_tabs" id="admin_content">
+	<%= render :partial => partial_path('list')%>
+</div>

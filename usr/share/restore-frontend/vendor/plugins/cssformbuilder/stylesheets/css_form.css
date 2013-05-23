@@ -1,0 +1,109 @@
+
+/* CSS form builder plugin stylesheets.
+  - copy (or link) this file into public/stylesheets/ folder
+  - include in your template (<%= stylesheet_link_tag 'css_form' %>)
+*/
+
+form.cssform, div.css_show {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #eee;
+  padding: 5px;
+  border: 1px solid #444;
+}
+
+form.cssform .form-field , div.css_show  .form-field {
+  display: block;
+  float: left;
+  font-size: 90%;
+  padding: 0px 0px 2px 0px;
+  margin: 0px 10px 0px 0px;
+}
+
+form.cssform br, div.css_show br {
+  clear: left;
+}
+
+form.cssform .form-field input,
+form.cssform .form-field select,
+form.cssform .form-field textarea,
+div.css_show .form-field span {
+  float: left;
+  padding: 0px;
+}
+
+form.cssform .form-field input,
+form.cssform .form-field select,
+form.cssform .form-field textarea {
+  border: solid 1px #1F7F00;
+}
+
+div.css_show .form-field span {
+  font-weight: bold;
+  background-color: #f7f7f7;
+  border: solid 1px #1F7F00;
+  width: 150px;
+}
+
+div.css_show  .form-field span.textarea{
+  width: 100%;
+  height: 100%;
+  border: solid 1px #1F7F00;
+}
+
+div.css_show  .form-field span.checkbox, 
+div.css_show  .form-field span.radiobutton{
+  width: 20px;
+}
+
+div.css_show pre{
+  background-color: #f7f7f7;
+}
+
+form.cssform .form-field input.normal-size,
+form.cssform .form-field select.normal-size,
+div.css_show .form-field span.normal-size {
+  width: 150px;
+}
+
+form.cssform .form-field input.double-size,
+form.cssform .form-field select.double-size,
+div.css_show .form-field span.double-size {
+  width: 310px;
+}
+
+form.cssform .form-field input.half-size,
+form.cssform .form-field select.half-size,
+div.css_show .form-field span.half-size {
+  width: 70px;
+}
+
+form.cssform .form-field input.numeric,
+div.css_show .form-field span.numeric {
+  width: 70px;
+  text-align: right;
+}
+
+form.cssform fieldset,
+div.css_show fieldset {
+  margin: 0px 5px 0px 5px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  border: 1px solid #aaa;
+} 
+
+form.cssform fieldset.continue,
+div.css_show fieldset.continue {
+  float: left;
+}
+
+form.cssform legend,
+div.css_show legend {
+  font-weight: bold;
+  font-style: italic;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #555;
+}
