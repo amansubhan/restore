@@ -1,0 +1,12 @@
+Package: restore-dc
+Source: restore
+Version: 4.0b39-1ubuntu1
+Architecture: all
+Maintainer: Adam Lebsack <adam@holonyx.com>
+Installed-Size: 32
+Depends: restore-dc-common, restore-dc-frontend
+Conflicts: restore-ee
+Section: web
+Priority: optional
+Description: Restore backup system (Data Center Edition)
+ Restore backup and restoration system (Data Center Edition)
